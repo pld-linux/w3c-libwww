@@ -4,19 +4,19 @@ Version:	5.2.8
 Release:	5
 Copyright:	W3C (see: http://www.w3.org/Consortium/Legal/copyright-software.html)
 Group:		Libraries
-Source:		http://www.w3.org/Library/Distribution/%{name}-%{version}.tar.gz
-Patch:		w3c-libwww-DESTDIR.patch
+Source0:	http://www.w3.org/Library/Distribution/%{name}-%{version}.tar.gz
+Patch0:		w3c-libwww-DESTDIR.patch
 URL:		http://www.w3.org/Library
 Icon:		Lib48x.gif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Libwww is a general-purpose Web API written in C for Unix and Windows
-(Win32). With a highly extensible and layered API, it can accommodate many
-different types of applications including clients, robots, etc. The purpose
-of libwww is to provide a highly optimized HTTP sample implementation as
-well as other Internet protocols and to serve as a testbed for protocol
-experiments.
+(Win32). With a highly extensible and layered API, it can accommodate
+many different types of applications including clients, robots, etc.
+The purpose of libwww is to provide a highly optimized HTTP sample
+implementation as well as other Internet protocols and to serve as a
+testbed for protocol experiments.
 
 %package devel
 Summary:	Libraries and header files for programs that use libwww
@@ -46,14 +46,15 @@ Requires:	%{name} = %{version}
 Icon:		robot48x.gif
 
 %description apps
-Web applications built using Libwww: Robot, Command line tool, line mode
-browser. The Robot can crawl web sites faster, and with lower load, than any
-other web walker that we know of, due to its extensive pipelining and use of
-HTTP/1.1. The command line tool (w3c) is very useful for manipulation of Web
-sites that implement more than just HTTP GET (e.g. PUT, POST, etc.). The
-line mode browser is a minimal line mode web browser; often useful to
-convert to ascii text. Currently unavailable until someone updates it to
-some new interfaces. (hint, hint...)
+Web applications built using Libwww: Robot, Command line tool, line
+mode browser. The Robot can crawl web sites faster, and with lower
+load, than any other web walker that we know of, due to its extensive
+pipelining and use of HTTP/1.1. The command line tool (w3c) is very
+useful for manipulation of Web sites that implement more than just
+HTTP GET (e.g. PUT, POST, etc.). The line mode browser is a minimal
+line mode web browser; often useful to convert to ascii text.
+Currently unavailable until someone updates it to some new interfaces.
+(hint, hint...)
 
 %prep
 %setup -q
@@ -90,6 +91,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/w3c-libwww
 
 %files apps
+%defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/webbot
 %attr(755,root,root) %{_bindir}/w3c
 
