@@ -78,7 +78,7 @@ Bibliotecas estáticas para desenvolvimento com w3c-libwww
 
 %package apps
 Summary:	Applications built using Libwww web library: e.g. Robot, command line tool, etc
-Summary(pl):	Aplikacje u¿ywaj±ce Libwww: Robot, narzêdzie command-line itp.
+Summary(pl):	Aplikacje u¿ywaj±ce Libwww: Robot, narzêdzie command-line itp
 Summary(pt_BR):	Aplicativos construídos usando a libwww
 Group:		Applications/Networking
 Requires:	%{name} = %{version}
