@@ -14,7 +14,7 @@ Group(ru):	Библиотеки
 Group(uk):	Б╕бл╕отеки
 Source0:	http://www.w3.org/Library/Distribution/%{name}-%{version}.tar.gz
 Patch0:		%{name}-DESTDIR.patch
-URL:		http://www.w3.org/Library
+URL:		http://www.w3.org/Library/
 Icon:		Lib48x.gif
 BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
