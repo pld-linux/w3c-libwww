@@ -1,9 +1,11 @@
 Summary:	HTTP library of common code
 Name:		w3c-libwww
-Version:	5.2.8
-Release:	6
+Version:	5.3.1
+Release:	1
 Copyright:	W3C (see: http://www.w3.org/Consortium/Legal/copyright-software.html)
 Group:		Libraries
+Group(de):	Libraries
+Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	http://www.w3.org/Library/Distribution/%{name}-%{version}.tar.gz
 Patch0:		%{name}-DESTDIR.patch
@@ -22,6 +24,7 @@ testbed for protocol experiments.
 %package devel
 Summary:	Libraries and header files for programs that use libwww
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -32,6 +35,7 @@ Header files for libwww, which are available as public libraries.
 %package static
 Summary:	Static libwww libraries
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
@@ -42,6 +46,7 @@ Static libwww libraries.
 %package apps
 Summary:	Applications built using Libwww web library: e.g. Robot, command line tool, etc
 Group:		Applications/Networking
+Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
 Requires:	%{name} = %{version}
 Icon:		robot48x.gif
@@ -59,7 +64,7 @@ Currently unavailable until someone updates it to some new interfaces.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 automake
