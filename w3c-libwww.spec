@@ -7,6 +7,7 @@ Release:	7
 License:	W3C (see: http://www.w3.org/Consortium/Legal/copyright-software.html)
 Group:		Libraries
 Source0:	http://www.w3.org/Library/Distribution/%{name}-%{version}.tar.gz
+# Source0-md5:	9bff5c3269d959a49aaf667977676880
 Patch0:		%{name}-ac25x.patch
 Patch1:		%{name}-am15.patch
 Patch2:		%{name}-system-expat.patch
