@@ -3,7 +3,7 @@ Summary(pl):	Biblioteka wspólnego kodu HTTP
 Summary(pt_BR):	Biblioteca HTTP de uso geral
 Name:		w3c-libwww
 Version:	5.3.2
-Release:	7
+Release:	8
 License:	W3C (see: http://www.w3.org/Consortium/Legal/copyright-software.html)
 Group:		Libraries
 Source0:	http://www.w3.org/Library/Distribution/%{name}-%{version}.tar.gz
@@ -11,6 +11,7 @@ Source0:	http://www.w3.org/Library/Distribution/%{name}-%{version}.tar.gz
 Patch0:		%{name}-ac25x.patch
 Patch1:		%{name}-am15.patch
 Patch2:		%{name}-system-expat.patch
+Patch3:		%{name}-nowarning.patch
 Icon:		Lib48x.gif
 URL:		http://www.w3.org/Library/
 BuildRequires:	autoconf
@@ -122,6 +123,7 @@ exemplo, PUT, POST, etc.)
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 rm -f missing
