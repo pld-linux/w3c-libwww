@@ -1,0 +1,14 @@
+diff -Nru w3c-libwww-5.2.8/Makefile.am w3c-libwww-5.2.8.new/Makefile.am
+--- w3c-libwww-5.2.8/Makefile.am	Mon Apr  5 17:13:57 1999
++++ w3c-libwww-5.2.8.new/Makefile.am	Mon Feb  7 07:58:57 2000
+@@ -24,8 +24,8 @@
+ # We need to install the config.h header file as well
+ install-exec-local:
+ 	@$(NORMAL_INSTALL)
+-	$(mkinstalldirs) $(pkgincludedir)
+-	$(INSTALL_DATA) $(top_builddir)/$(CONFIG_HEADER) $(pkgincludedir)/$(CONFIG_HEADER);
++	$(mkinstalldirs) $(DESTDIR)$(pkgincludedir)
++	$(INSTALL_DATA) $(top_builddir)/$(CONFIG_HEADER) $(DESTDIR)$(pkgincludedir)/$(CONFIG_HEADER);
+ 
+ # This is our install script provided by Soren Sandmann
+ bin_SCRIPTS = libwww-config
