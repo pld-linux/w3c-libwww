@@ -136,9 +136,9 @@
  	$(LIBS)
  
  
---- w3c-libwww-5.3.2/configure.in.orig	Sat Jan 25 13:50:01 2003
-+++ w3c-libwww-5.3.2/configure.in	Sat Jan 25 14:32:15 2003
-@@ -475,24 +475,24 @@
+--- w3c-libwww-5.4.0/configure.in.orig	2002-06-12 11:26:46.000000000 +0200
++++ w3c-libwww-5.4.0/configure.in	2003-10-23 00:25:01.459776472 +0200
+@@ -497,24 +497,24 @@
      AC_MSG_RESULT(yes)
      AC_DEFINE(HT_EXPAT)
      HTXML="HTXML.lo"
@@ -153,7 +153,7 @@
 -    LIBWWWXML='${top_builddir}/Library/src/libwwwxml.la ${top_builddir}/modules/expat/xmlparse/libxmlparse.la ${top_builddir}/modules/expat/xmltok/libxmltok.la'
 +    LWWWXML="-lwwwxml -lexpat"
 +    LIBWWWXML='${top_builddir}/Library/src/libwwwxml.la -lexpat'
-     SHOWXML="showxml ptri stri rdf_parse_file rdf_parse_buffer"
+     SHOWXML='showxml$(EXEEXT) ptri$(EXEEXT) stri$(EXEEXT) rdf_parse_file$(EXEEXT) rdf_parse_buffer$(EXEEXT)'
      ;;
    esac ],
    AC_MSG_RESULT(yes)
@@ -170,11 +170,24 @@
 -  LIBWWWXML='${top_builddir}/Library/src/libwwwxml.la ${top_builddir}/modules/expat/xmlparse/libxmlparse.la ${top_builddir}/modules/expat/xmltok/libxmltok.la'
 +  LWWWXML="-lwwwxml -lexpat"
 +  LIBWWWXML='${top_builddir}/Library/src/libwwwxml.la -lexpat'
-   SHOWXML="showxml ptri stri rdf_parse_file rdf_parse_buffer"
+   SHOWXML='showxml$(EXEEXT) ptri$(EXEEXT) stri$(EXEEXT) rdf_parse_file$(EXEEXT) rdf_parse_buffer$(EXEEXT)'
  )
  AC_SUBST(HTXML)		# for old style big library
 --- w3c-libwww-5.3.2/Library/src/HTXML.h.orig	Wed Dec 20 12:00:07 2000
 +++ w3c-libwww-5.3.2/Library/src/HTXML.h	Sat Jan 25 14:33:46 2003
+@@ -19,11 +19,7 @@
+ of the  W3C Sample Code Library.
+ 
+ We use James Clark's expat
+-XML parser which is very neat indeed. As the code doesn't come as a separate
+-library, I included it in the libwww CVS code base where I compile is as
+-two libraries: libxmltok.a and libxmlparse.a. See
+-the external modules that libwww works with for
+-details. Thanks so much to John Punin for writing this code!
++XML parser which is very neat indeed.
+ */
+ 
+ #ifndef HTXML_H
 @@ -36,7 +36,7 @@
  #include "SGML.h"
  #endif /* HT_STRUCT_XML_STREAM */
@@ -184,27 +197,3 @@
  
  /*
  .
---- w3c-libwww-5.3.2/Library/src/HTXML.html.orig	Tue Dec 19 09:53:43 2000
-+++ w3c-libwww-5.3.2/Library/src/HTXML.html	Sat Jan 25 14:35:10 2003
-@@ -17,11 +17,7 @@
- of the <A HREF="http://www.w3.org/Library/"> W3C Sample Code Library</A>.
- <P>
- We use <A href="http://www.jclark.com/xml/expat.html">James Clark's expat
--XML parser</A> which is very neat indeed. As the code doesn't come as a separate
--library, I included it in the libwww CVS code base where I compile is as
--two libraries: <CODE>libxmltok.a</CODE> and <CODE>libxmlparse.a</CODE>. See
--the <A HREF="../External/">external modules that libwww works</A> with for
--details. Thanks so much to John Punin for writing this code!
-+XML parser</A> which is very neat indeed.
- <PRE>
- #ifndef HTXML_H
- #define HTXML_H
-@@ -33,7 +29,7 @@
- #include "<A HREF="SGML.html">SGML.h</A>"
- #endif /* HT_STRUCT_XML_STREAM */
- 
--#include &lt;xmlparse.h&gt;
-+#include &lt;expat.h&gt;
- </PRE>
- <H2>
-   <A NAME="converter">Libwww Stream Converter</A>

@@ -1,17 +1,19 @@
 Summary:	HTTP library of common code
 Summary(pl):	Biblioteka wspСlnego kodu HTTP
 Summary(pt_BR):	Biblioteca HTTP de uso geral
+Summary(ru):	HTTP-библиотека общеупотребительного кода
+Summary(uk):	HTTP-б╕бл╕отека загальновживаного коду
 Name:		w3c-libwww
-Version:	5.3.2
-Release:	9
+Version:	5.4.0
+Release:	1
 License:	W3C (see: http://www.w3.org/Consortium/Legal/copyright-software.html)
 Group:		Libraries
-Source0:	http://www.w3.org/Library/Distribution/%{name}-%{version}.tar.gz
+Source0:	http://www.w3.org/Library/Distribution/%{name}-%{version}.tgz
 # Source0-md5:	9bff5c3269d959a49aaf667977676880
 Patch0:		%{name}-ac25x.patch
 Patch1:		%{name}-am15.patch
 Patch2:		%{name}-system-expat.patch
-Patch3:		%{name}-nowarning.patch
+Patch3:		%{name}-amfix.patch
 Icon:		Lib48x.gif
 URL:		http://www.w3.org/Library/
 BuildRequires:	autoconf
@@ -46,12 +48,32 @@ clientes, robТs, etc. O propСsito da libwww И fornecer uma
 implementaГЦo HTTP exemplo altamente otimizada para servidor como um
 ambiente de testes para experimentaГУes com protocolos.
 
+%description -l ru
+Libwww - это Web API общего назначения, написанные на C для Unix и
+Windows (Win32). Имея расширяемые многоуровневые API, она пригодна для
+построения множества различных типов приложений включая клиентов,
+роботов etc. Libwww является примером высокооптимизированной
+реализации HTTP и других Интернет-протоколов и тестовой средой для
+экспериментов с протоколами.
+
+%description -l uk
+Libwww - це Web API загального призначення, написан╕ на C для Unix та
+Windows (Win32). Маючи розширюван╕ багатор╕внев╕ API, вона придатна
+для побудови велико╖ к╕лькост╕ р╕зних р╕зних тип╕в прикладних програм
+включаючи кл╕╓нт╕в, робот╕в etc. Libwww ╓ прикладом
+високооптим╕зовано╖ реал╕зац╕╖ HTTP та ╕нших ╤нтернет-протокол╕в та
+тестовим середовищем для експеримент╕в з протоколами.
+
 %package devel
 Summary:	Header files for programs that use libwww
 Summary(pl):	Pliki nagЁСwkowe dla programСw u©ywaj╠cych libwww
 Summary(pt_BR):	Arquivos necessАrios para desenvolvimento com a libwww
+Summary(ru):	Библиотеки и хедеры для программ, которые используют libwww
+Summary(uk):	Б╕бл╕отеки та хедери для програм, що використовують libwww
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
+Requires:	openssl-devel >= 0.9.7c
+Requires:	zlib-devel
 
 %description devel
 Header files for libwww, which are available as public libraries.
@@ -62,6 +84,12 @@ Pliki nagЁСwkowe dla libwww.
 %description devel -l pt_BR
 Bibliotecas e arquivos de inclusЦo para desenvolvimento baseado na
 libwww, que estА disponМvel ao pЗblico.
+
+%description devel -l ru
+Библиотеки разработчика и хедеры для libwww.
+
+%description devel -l uk
+Б╕бл╕отеки програм╕ста та хедери для libwww.
 
 %package static
 Summary:	Static libwww libraries
@@ -83,9 +111,11 @@ Bibliotecas estАticas para desenvolvimento com w3c-libwww
 Summary:	Applications built using Libwww web library: e.g. Robot, command line tool, etc
 Summary(pl):	Aplikacje u©ywaj╠ce Libwww: Robot, narzЙdzie command-line itp
 Summary(pt_BR):	Aplicativos construМdos usando a libwww
+Summary(ru):	Приложения с использованием Libwww - робот, утилита командной строки и т.п.
+Summary(uk):	Програми з використанням Libwww - робот, утил╕та командного рядка ╕ т.╕.
 Group:		Applications/Networking
-Requires:	%{name} = %{version}
 Icon:		robot48x.gif
+Requires:	%{name} = %{version}
 
 %description apps
 Web applications built using Libwww: Robot, Command line tool, line
@@ -118,6 +148,32 @@ A Ferramenta de execuГЦo de linha de comando (w3c) И muito Зtil para
 manipulaГЦo de sМtios Web que implementam mais do que um HTTP GET (por
 exemplo, PUT, POST, etc.)
 
+%description apps -l ru
+Web-приложения, построенные с использованием Libwww - робот, утилита
+командной строки, строчный браузер. Робот может бродить по web-сайтам
+быстрее и с меньшей нагрузкой чем любая другая известная нам бродилка
+из-за исключительной конвейеризации и использования HTTP/1.1.
+
+Утилита командной строки (w3c) очень полезна для работы с web-сайтами,
+которые реализуют больше команд чем просто HTTP GET (например, PUT,
+POST, etc.).
+
+Строчный браузер - это минимальный web-браузер, работающий в командном
+режиме. Часто полезен для преобразования в текстовый формат.
+
+%description apps -l uk
+Web-програми, побудован╕ з використанням Libwww - робот, утил╕та
+командно╖ стр╕чки, командний браузер. Робот може ходити по web-сайтах
+швидше та з меншим завантаженням н╕ж будь-яка в╕дома нам ходилка
+завдяки виключн╕й конвей╓ризац╕╖ та використанню HTTP/1.1.
+
+Утил╕та командного рядка (w3c) дуже корисна для роботи з web-сайтами,
+як╕ реал╕зують б╕льше команд н╕ж просто HTTP GET (наприклад, PUT,
+POST, etc.).
+
+Командний браузер - це м╕н╕мальний web-браузер, що працю╓ в командному
+режим╕. Часто корисний для перетворення у текстовий формат.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -126,7 +182,6 @@ exemplo, PUT, POST, etc.)
 %patch3 -p1
 
 %build
-rm -f missing
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
@@ -143,10 +198,8 @@ rm -f missing
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
-
-%{__mkdir} documentation
-%{__cp} -p --parents *.html */*.html */*/*.html documentation
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -156,7 +209,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc documentation/* Icons/*/*.gif
+%doc COPYRIGHT.html ChangeLog LICENSE.html
 %attr(755,root,root) %{_libdir}/libwww*.so.*.*
 %attr(755,root,root) %{_libdir}/libmd5.so.*.*
 %attr(755,root,root) %{_libdir}/libpics.so.*.*
@@ -177,7 +230,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libwww*.la
 %{_libdir}/libmd5.la
 %{_libdir}/libpics.la
-
 %{_includedir}/wwwconf.h
 %{_includedir}/w3c-libwww
 

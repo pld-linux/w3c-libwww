@@ -242,15 +242,6 @@
    [ AC_HEADER_INCLUDE(tmp_inc_errno, errno.h sys/errno.h)
 --- w3c-libwww-5.3.2/configure.in~	Sat Mar  2 06:46:58 2002
 +++ w3c-libwww-5.3.2/configure.in	Sat Mar  2 06:46:58 2002
-@@ -213,7 +213,7 @@
- 		getlogin getpass fcntl readdir sysinfo ioctl chdir tempnam \
- 		getsockopt setsockopt \
- 		gettimeofday mktime timegm tzset)
--AC_CHECK_FUNC(unlink, , AC_CHECK_FUNC(remove, AC_DEFINE(unlink, remove)))
-+AC_CHECK_FUNC(unlink, [], [AC_CHECK_FUNC(remove, AC_DEFINE(unlink, remove))])
- 
- dnl Checks for configuration arguments
- AC_MSG_CHECKING(whether to support direct WAIS access.)
 @@ -986,7 +986,8 @@
      ;;
    *) 
@@ -261,11 +252,3 @@
      ;;
    esac ],
    AC_MSG_RESULT(no)
-@@ -1006,7 +1006,6 @@
- Library/Makefile Library/User/Makefile Library/User/Patch/Makefile
- Library/User/Architecture/Makefile Library/User/Using/Makefile Library/User/Guide/Makefile
- Library/User/Style/Makefile Library/User/Platform/Makefile
--Library/Test/Makefile Library/Test/User/Makefile Library/Test/src/Makefile
- Library/src/Makefile Library/src/windows/Makefile Library/src/vms/Makefile 
- Library/src/SSL/Makefile Library/src/SSL/windows/Makefile
- Library/Examples/Makefile
