@@ -3,12 +3,13 @@ Summary(pl):	Biblioteka wspólnego kodu HTTP
 Summary(pt_BR):	Biblioteca HTTP de uso geral
 Name:		w3c-libwww
 Version:	5.3.2
-Release:	6
+Release:	7
 License:	W3C (see: http://www.w3.org/Consortium/Legal/copyright-software.html)
 Group:		Libraries
 Source0:	http://www.w3.org/Library/Distribution/%{name}-%{version}.tar.gz
 Patch0:		%{name}-ac25x.patch
 Patch1:		%{name}-am15.patch
+Patch2:		%{name}-system-expat.patch
 Icon:		Lib48x.gif
 URL:		http://www.w3.org/Library/
 BuildRequires:	autoconf
@@ -119,6 +120,7 @@ exemplo, PUT, POST, etc.)
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 rm -f missing
@@ -153,7 +155,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc documentation/* Icons/*/*.gif
 %attr(755,root,root) %{_libdir}/libwww*.so.*.*
-%attr(755,root,root) %{_libdir}/libxml*.so.*.*
 %attr(755,root,root) %{_libdir}/libmd5.so.*.*
 %attr(755,root,root) %{_libdir}/libpics.so.*.*
 %{_datadir}/w3c-libwww
@@ -168,11 +169,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/libwww-config
 %attr(755,root,root) %{_libdir}/libwww*.so
-%attr(755,root,root) %{_libdir}/libxml*.so
 %attr(755,root,root) %{_libdir}/libmd5.so
 %attr(755,root,root) %{_libdir}/libpics.so
 %{_libdir}/libwww*.la
-%{_libdir}/libxml*.la
 %{_libdir}/libmd5.la
 %{_libdir}/libpics.la
 
@@ -182,6 +181,5 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libwww*.a
-%{_libdir}/libxml*.a
 %{_libdir}/libmd5.a
 %{_libdir}/libpics.a
