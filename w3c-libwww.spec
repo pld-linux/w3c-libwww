@@ -40,7 +40,7 @@ Static libwww libraries.
 
 %package apps
 Summary:	Applications built using Libwww web library: e.g. Robot, command line tool, etc
-Group:		Networking
+Group:		Applications/Networking
 Group(pl):	Aplikacje/Sieciowe
 Requires:	%{name} = %{version}
 Icon:		robot48x.gif
