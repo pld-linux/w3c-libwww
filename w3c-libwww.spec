@@ -5,13 +5,6 @@ Version:	5.3.2
 Release:	1
 License:	W3C (see: http://www.w3.org/Consortium/Legal/copyright-software.html)
 Group:		Libraries
-Group(de):	Libraries
-Group(es):	Bibliotecas
-Group(fr):	Librairies
-Group(pl):	Biblioteki
-Group(pt_BR):	Bibliotecas
-Group(ru):	Библиотеки
-Group(uk):	Б╕бл╕отеки
 Source0:	http://www.w3.org/Library/Distribution/%{name}-%{version}.tar.gz
 URL:		http://www.w3.org/Library/
 Icon:		Lib48x.gif
@@ -38,13 +31,6 @@ protokoЁami.
 Summary:	Header files for programs that use libwww
 Summary(pl):	Pliki nagЁСwkowe dla programСw u©ywaj╠cych libwww
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description devel
@@ -57,13 +43,6 @@ Pliki nagЁСwkowe dla libwww.
 Summary:	Static libwww libraries
 Summary(pl):	Statyczne biblioteki libwww
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
@@ -76,8 +55,6 @@ Statyczne biblioteki libwww.
 Summary:	Applications built using Libwww web library: e.g. Robot, command line tool, etc
 Summary(pl):	Aplikacje u©ywaj╠ce Libwww: Robot, narzЙdzie command-line itp.
 Group:		Applications/Networking
-Group(de):	Applikationen/Netzwerkwesen
-Group(pl):	Aplikacje/Sieciowe
 Requires:	%{name} = %{version}
 Icon:		robot48x.gif
 
