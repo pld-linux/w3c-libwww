@@ -3,7 +3,7 @@ Summary(pl):	Biblioteka wspólnego kodu HTTP
 Summary(pt_BR):	Biblioteca HTTP de uso geral
 Name:		w3c-libwww
 Version:	5.3.2
-Release:	8
+Release:	9
 License:	W3C (see: http://www.w3.org/Consortium/Legal/copyright-software.html)
 Group:		Libraries
 Source0:	http://www.w3.org/Library/Distribution/%{name}-%{version}.tar.gz
