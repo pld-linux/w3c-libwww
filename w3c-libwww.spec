@@ -140,6 +140,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
+%{__mkdir} documentation
+%{__cp} -p --parents *.html */*.html */*/*.html documentation
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -148,7 +151,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.html */*.html */*/*.html Icons/*/*.gif
+%doc documentation/* Icons/*/*.gif
 %attr(755,root,root) %{_libdir}/libwww*.so.*.*
 %attr(755,root,root) %{_libdir}/libxml*.so.*.*
 %attr(755,root,root) %{_libdir}/libmd5.so.*.*
