@@ -168,10 +168,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libxml*.so
 %attr(755,root,root) %{_libdir}/libmd5.so
 %attr(755,root,root) %{_libdir}/libpics.so
-%attr(755,root,root) %{_libdir}/libwww*.la
-%attr(755,root,root) %{_libdir}/libxml*.la
-%attr(755,root,root) %{_libdir}/libmd5.la
-%attr(755,root,root) %{_libdir}/libpics.la
+%{_libdir}/libwww*.la
+%{_libdir}/libxml*.la
+%{_libdir}/libmd5.la
+%{_libdir}/libpics.la
 
 %{_includedir}/wwwconf.h
 %{_includedir}/w3c-libwww
