@@ -1,7 +1,7 @@
 Summary:	HTTP library of common code
 Summary(pl):	Biblioteka wspÛlnego kodu HTTP
 Name:		w3c-libwww
-Version:	5.3.1
+Version:	5.3.2
 Release:	1
 License:	W3C (see: http://www.w3.org/Consortium/Legal/copyright-software.html)
 Group:		Libraries
@@ -13,10 +13,8 @@ Group(pt_BR):	Bibliotecas
 Group(ru):	‚…¬Ã…œ‘≈À…
 Group(uk):	‚¶¬Ã¶œ‘≈À…
 Source0:	http://www.w3.org/Library/Distribution/%{name}-%{version}.tar.gz
-Patch0:		%{name}-DESTDIR.patch
 URL:		http://www.w3.org/Library/
 Icon:		Lib48x.gif
-BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -107,11 +105,9 @@ nowego interfejsu (hint, hint...).
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-automake -a -c
-%configure \
+%configure2_13 \
 	--enable-shared \
 	--with-gnu-ld \
 	--with-regex \
@@ -135,12 +131,14 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libwww*.so.*.*
 %attr(755,root,root) %{_libdir}/libxml*.so.*.*
 %attr(755,root,root) %{_libdir}/libmd5.so.*.*
+%attr(755,root,root) %{_libdir}/libpics.so.*.*
 %{_datadir}/w3c-libwww
 
 %files apps
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/webbot
 %attr(755,root,root) %{_bindir}/w3c
+%attr(755,root,root) %{_bindir}/www
 
 %files devel
 %defattr(644,root,root,755)
@@ -148,11 +146,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libwww*.so
 %attr(755,root,root) %{_libdir}/libxml*.so
 %attr(755,root,root) %{_libdir}/libmd5.so
+%attr(755,root,root) %{_libdir}/libpics.so
 %attr(755,root,root) %{_libdir}/libwww*.la
 %attr(755,root,root) %{_libdir}/libxml*.la
 %attr(755,root,root) %{_libdir}/libmd5.la
+%attr(755,root,root) %{_libdir}/libpics.la
 
-%{_includedir}/xmlparse.h
+%{_includedir}/wwwconf.h
 %{_includedir}/w3c-libwww
 
 %files static
@@ -160,3 +160,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libwww*.a
 %{_libdir}/libxml*.a
 %{_libdir}/libmd5.a
+%{_libdir}/libpics.a
