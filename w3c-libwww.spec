@@ -68,7 +68,7 @@ LDFLAGS="-s"; export LDFLAGS
 	--with-gnu-ld \
 	--with-regex \
 	--with-zlib
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
