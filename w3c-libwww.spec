@@ -8,7 +8,7 @@ Source:		http://www.w3.org/Library/Distribution/%{name}-%{version}.tar.gz
 Patch:		w3c-libwww-DESTDIR.patch
 URL:		http://www.w3.org/Library
 Icon:		Lib48x.gif
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Libwww is a general-purpose Web API written in C for Unix and Windows
