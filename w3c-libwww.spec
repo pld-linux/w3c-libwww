@@ -3,7 +3,7 @@ Summary(pl):	Biblioteka wspólnego kodu HTTP
 Name:		w3c-libwww
 Version:	5.3.1
 Release:	1
-Copyright:	W3C (see: http://www.w3.org/Consortium/Legal/copyright-software.html)
+License:	W3C (see: http://www.w3.org/Consortium/Legal/copyright-software.html)
 Group:		Libraries
 Group(de):	Libraries
 Group(es):	Bibliotecas
