@@ -1,16 +1,22 @@
 Summary:	HTTP library of common code
+Summary(pl):	Biblioteka wspÛlnego kodu HTTP
 Name:		w3c-libwww
 Version:	5.3.1
 Release:	1
 Copyright:	W3C (see: http://www.w3.org/Consortium/Legal/copyright-software.html)
 Group:		Libraries
 Group(de):	Libraries
+Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
+Group(pt_BR):	Bibliotecas
+Group(ru):	‚…¬Ã…œ‘≈À…
+Group(uk):	‚¶¬Ã¶œ‘≈À…
 Source0:	http://www.w3.org/Library/Distribution/%{name}-%{version}.tar.gz
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://www.w3.org/Library
 Icon:		Lib48x.gif
+BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -21,30 +27,56 @@ The purpose of libwww is to provide a highly optimized HTTP sample
 implementation as well as other Internet protocols and to serve as a
 testbed for protocol experiments.
 
+%description -l pl
+Libwww jest bibliotek± WWW ogÛlnego przeznaczenia napisan± w C dla
+UniksÛw oraz Windows. Z wysoko rozszerzalnym i warstwowym API, moøe
+mieÊ zastosowanie w wielu rodzajach aplikacji, w tym klientach,
+robotach itp. Celem libwww jest dostarczenie dobrze zoptymalizowanej,
+przyk≥adowej implementacji HTTP, a takøe innych protoko≥Ûw
+internetowych, oraz ∂rodowiska testowego do eksperymentÛw z
+protoko≥ami.
+
 %package devel
-Summary:	Libraries and header files for programs that use libwww
+Summary:	Header files for programs that use libwww
+Summary(pl):	Pliki nag≥Ûwkowe dla programÛw uøywaj±cych libwww
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Ú¡⁄“¡¬œ‘À¡/‚…¬Ã…œ‘≈À…
+Group(uk):	Úœ⁄“œ¬À¡/‚¶¬Ã¶œ‘≈À…
 Requires:	%{name} = %{version}
 
 %description devel
 Header files for libwww, which are available as public libraries.
 
+%description devel -l pl
+Pliki nag≥Ûwkowe dla libwww.
+
 %package static
 Summary:	Static libwww libraries
+Summary(pl):	Statyczne biblioteki libwww
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Ú¡⁄“¡¬œ‘À¡/‚…¬Ã…œ‘≈À…
+Group(uk):	Úœ⁄“œ¬À¡/‚¶¬Ã¶œ‘≈À…
 Requires:	%{name}-devel = %{version}
 
 %description static
 Static libwww libraries.
 
+%description static -l pl
+Statyczne biblioteki libwww.
+
 %package apps
 Summary:	Applications built using Libwww web library: e.g. Robot, command line tool, etc
+Summary(pl):	Aplikacje uøywaj±ce Libwww: Robot, narzÍdzie command-line itp.
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
@@ -62,12 +94,23 @@ line mode web browser; often useful to convert to ascii text.
 Currently unavailable until someone updates it to some new interfaces.
 (hint, hint...)
 
+%description apps -l pl
+Aplikacje sieciowe zbudowane przy uøyciu libwww: Robot, narzÍdzie
+comman-line, liniowa przegl±darka. Robot moøe przechodziÊ po stronach
+szybciej i z mniejszym obci±øeniem niø inne znane roboty, dziÍki
+wykorzystywaniu pipeliningu i HTTP/1.1. NarzÍdzie command-line (w3c)
+jest uøyteczne do manipulowania serwisami WWW, ktÛre maj±
+zaimplementowane co∂ wiÍcej niø HTTP GET (np. PUT, POST...).
+Przegl±darka liniowa jest uøyteczna g≥Ûwnie do konwersji do zwyk≥ego
+tekstu. Aktualnie niedostÍpna dopÛki kto∂ nie przystosuje jej do
+nowego interfejsu (hint, hint...).
+
 %prep
 %setup -q
 %patch0 -p1
 
 %build
-automake
+automake -a -c
 %configure \
 	--enable-shared \
 	--with-gnu-ld \
