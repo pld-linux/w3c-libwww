@@ -17,7 +17,7 @@ URL:		http://www.w3.org/Library/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
-BuildRequires:	openssl-devel >= 0.9.7
+BuildRequires:	openssl-devel >= 0.9.6k
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -81,7 +81,7 @@ Bibliotecas estáticas para desenvolvimento com w3c-libwww
 
 %package apps
 Summary:	Applications built using Libwww web library: e.g. Robot, command line tool, etc
-Summary(pl):	Aplikacje u¿ywaj±ce Libwww: Robot, narzêdzie command-line itp
+Summary(pl):	Aplikacje u¿ywaj±ce Libwww: Robot, narzêdzie command-line itp.
 Summary(pt_BR):	Aplicativos construídos usando a libwww
 Group:		Applications/Networking
 Requires:	%{name} = %{version}
@@ -151,8 +151,8 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
