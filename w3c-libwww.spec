@@ -1,11 +1,12 @@
 Summary:	HTTP library of common code
 Name:		w3c-libwww
 Version:	5.2.8
-Release:	5
+Release:	6
 Copyright:	W3C (see: http://www.w3.org/Consortium/Legal/copyright-software.html)
 Group:		Libraries
+Group(pl):	Biblioteki
 Source0:	http://www.w3.org/Library/Distribution/%{name}-%{version}.tar.gz
-Patch0:		w3c-libwww-DESTDIR.patch
+Patch0:		%{name}-DESTDIR.patch
 URL:		http://www.w3.org/Library
 Icon:		Lib48x.gif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -62,7 +63,6 @@ Currently unavailable until someone updates it to some new interfaces.
 
 %build
 automake
-LDFLAGS="-s"; export LDFLAGS
 %configure \
 	--enable-shared \
 	--with-gnu-ld \
@@ -73,9 +73,10 @@ LDFLAGS="-s"; export LDFLAGS
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} DESTDIR=$RPM_BUILD_ROOT install
+%{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
