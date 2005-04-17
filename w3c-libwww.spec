@@ -5,7 +5,7 @@ Summary(ru):	HTTP-библиотека общеупотребительного кода
 Summary(uk):	HTTP-б╕бл╕отека загальновживаного коду
 Name:		w3c-libwww
 Version:	5.4.0
-Release:	2
+Release:	2.1
 License:	W3C (see: http://www.w3.org/Consortium/Legal/copyright-software.html)
 Group:		Libraries
 Source0:	http://www.w3.org/Library/Distribution/%{name}-%{version}.tgz
@@ -22,6 +22,9 @@ BuildRequires:	libtool
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+# TODO: add real fix for --as-needed
+%define rpmldflags %{nil}
 
 %description
 Libwww is a general-purpose Web API written in C for Unix and Windows
