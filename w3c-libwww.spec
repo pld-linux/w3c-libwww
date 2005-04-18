@@ -23,9 +23,6 @@ BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-# TODO: add real fix for --as-needed
-%define rpmldflags %{nil}
-
 %description
 Libwww is a general-purpose Web API written in C for Unix and Windows
 (Win32). With a highly extensible and layered API, it can accommodate
