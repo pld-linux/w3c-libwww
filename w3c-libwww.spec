@@ -18,6 +18,7 @@ Icon:		Lib48x.gif
 URL:		http://www.w3.org/Library/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	expat-devel
 BuildRequires:	libtool
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	zlib-devel
@@ -72,6 +73,7 @@ Summary(ru):	Библиотеки и хедеры для программ, которые используют libwww
 Summary(uk):	Б╕бл╕отеки та хедери для програм, що використовують libwww
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
+Requires:	expat-devel
 Requires:	openssl-devel >= 0.9.7c
 Requires:	zlib-devel
 
