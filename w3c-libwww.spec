@@ -14,7 +14,6 @@ Patch0:		%{name}-ac25x.patch
 Patch1:		%{name}-am15.patch
 Patch2:		%{name}-system-expat.patch
 Patch3:		%{name}-amfix.patch
-Icon:		Lib48x.gif
 URL:		http://www.w3.org/Library/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -116,7 +115,6 @@ Summary(pt_BR):	Aplicativos construМdos usando a libwww
 Summary(ru):	Приложения с использованием Libwww - робот, утилита командной строки и т.п.
 Summary(uk):	Програми з використанням Libwww - робот, утил╕та командного рядка ╕ т.╕.
 Group:		Applications/Networking
-Icon:		robot48x.gif
 Requires:	%{name} = %{version}
 
 %description apps
