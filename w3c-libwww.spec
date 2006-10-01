@@ -5,7 +5,7 @@ Summary(ru):	HTTP-библиотека общеупотребительного кода
 Summary(uk):	HTTP-б╕бл╕отека загальновживаного коду
 Name:		w3c-libwww
 Version:	5.4.0
-Release:	5
+Release:	6
 License:	W3C (see: http://www.w3.org/Consortium/Legal/copyright-software.html)
 Group:		Libraries
 Source0:	http://www.w3.org/Library/Distribution/%{name}-%{version}.tgz
@@ -14,6 +14,7 @@ Patch0:		%{name}-ac25x.patch
 Patch1:		%{name}-am15.patch
 Patch2:		%{name}-system-expat.patch
 Patch3:		%{name}-amfix.patch
+Patch4:		%{name}-link.patch
 URL:		http://www.w3.org/Library/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -180,6 +181,7 @@ POST, etc.).
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 %{__libtoolize}
