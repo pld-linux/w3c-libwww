@@ -72,7 +72,7 @@ Summary(pt_BR):	Arquivos necessАrios para desenvolvimento com a libwww
 Summary(ru):	Библиотеки и хедеры для программ, которые используют libwww
 Summary(uk):	Б╕бл╕отеки та хедери для програм, що використовують libwww
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Requires:	expat-devel
 Requires:	openssl-devel >= 0.9.7c
 Requires:	zlib-devel
@@ -98,7 +98,7 @@ Summary:	Static libwww libraries
 Summary(pl):	Statyczne biblioteki libwww
 Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com w3c-libwww
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libwww libraries.
@@ -116,7 +116,7 @@ Summary(pt_BR):	Aplicativos construМdos usando a libwww
 Summary(ru):	Приложения с использованием Libwww - робот, утилита командной строки и т.п.
 Summary(uk):	Програми з використанням Libwww - робот, утил╕та командного рядка ╕ т.╕.
 Group:		Applications/Networking
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description apps
 Web applications built using Libwww: Robot, Command line tool, line
