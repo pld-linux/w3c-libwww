@@ -1,0 +1,2 @@
+- updated to 5.3.2, updated %files, use configure2_13 - builds now
+- removed obsolete DESTDIR patch
