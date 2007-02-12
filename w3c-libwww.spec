@@ -1,8 +1,8 @@
 Summary:	HTTP library of common code
-Summary(pl.UTF-8):   Biblioteka wspólnego kodu HTTP
-Summary(pt_BR.UTF-8):   Biblioteca HTTP de uso geral
-Summary(ru.UTF-8):   HTTP-библиотека общеупотребительного кода
-Summary(uk.UTF-8):   HTTP-бібліотека загальновживаного коду
+Summary(pl.UTF-8):	Biblioteka wspólnego kodu HTTP
+Summary(pt_BR.UTF-8):	Biblioteca HTTP de uso geral
+Summary(ru.UTF-8):	HTTP-библиотека общеупотребительного кода
+Summary(uk.UTF-8):	HTTP-бібліотека загальновживаного коду
 Name:		w3c-libwww
 Version:	5.4.0
 Release:	6
@@ -67,10 +67,10 @@ Windows (Win32). Маючи розширювані багаторівневі AP
 
 %package devel
 Summary:	Header files for programs that use libwww
-Summary(pl.UTF-8):   Pliki nagłówkowe dla programów używających libwww
-Summary(pt_BR.UTF-8):   Arquivos necessários para desenvolvimento com a libwww
-Summary(ru.UTF-8):   Библиотеки и хедеры для программ, которые используют libwww
-Summary(uk.UTF-8):   Бібліотеки та хедери для програм, що використовують libwww
+Summary(pl.UTF-8):	Pliki nagłówkowe dla programów używających libwww
+Summary(pt_BR.UTF-8):	Arquivos necessários para desenvolvimento com a libwww
+Summary(ru.UTF-8):	Библиотеки и хедеры для программ, которые используют libwww
+Summary(uk.UTF-8):	Бібліотеки та хедери для програм, що використовують libwww
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	expat-devel
@@ -95,8 +95,8 @@ libwww, que está disponível ao público.
 
 %package static
 Summary:	Static libwww libraries
-Summary(pl.UTF-8):   Statyczne biblioteki libwww
-Summary(pt_BR.UTF-8):   Bibliotecas estáticas para desenvolvimento com w3c-libwww
+Summary(pl.UTF-8):	Statyczne biblioteki libwww
+Summary(pt_BR.UTF-8):	Bibliotecas estáticas para desenvolvimento com w3c-libwww
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -111,10 +111,10 @@ Bibliotecas estáticas para desenvolvimento com w3c-libwww
 
 %package apps
 Summary:	Applications built using Libwww web library: e.g. Robot, command line tool, etc
-Summary(pl.UTF-8):   Aplikacje używające Libwww: Robot, narzędzie command-line itp
-Summary(pt_BR.UTF-8):   Aplicativos construídos usando a libwww
-Summary(ru.UTF-8):   Приложения с использованием Libwww - робот, утилита командной строки и т.п.
-Summary(uk.UTF-8):   Програми з використанням Libwww - робот, утиліта командного рядка і т.і.
+Summary(pl.UTF-8):	Aplikacje używające Libwww: Robot, narzędzie command-line itp
+Summary(pt_BR.UTF-8):	Aplicativos construídos usando a libwww
+Summary(ru.UTF-8):	Приложения с использованием Libwww - робот, утилита командной строки и т.п.
+Summary(uk.UTF-8):	Програми з використанням Libwww - робот, утиліта командного рядка і т.і.
 Group:		Applications/Networking
 Requires:	%{name} = %{version}-%{release}
 
