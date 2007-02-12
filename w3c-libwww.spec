@@ -1,8 +1,8 @@
 Summary:	HTTP library of common code
-Summary(pl):	Biblioteka wspСlnego kodu HTTP
-Summary(pt_BR):	Biblioteca HTTP de uso geral
-Summary(ru):	HTTP-библиотека общеупотребительного кода
-Summary(uk):	HTTP-б╕бл╕отека загальновживаного коду
+Summary(pl.UTF-8):   Biblioteka wspцЁlnego kodu HTTP
+Summary(pt_BR.UTF-8):   Biblioteca HTTP de uso geral
+Summary(ru.UTF-8):   HTTP-п╠п╦п╠п╩п╦п╬я┌п╣п╨п╟ п╬п╠я┴п╣я┐п©п╬я┌я─п╣п╠п╦я┌п╣п╩я▄п╫п╬пЁп╬ п╨п╬п╢п╟
+Summary(uk.UTF-8):   HTTP-п╠я√п╠п╩я√п╬я┌п╣п╨п╟ п╥п╟пЁп╟п╩я▄п╫п╬п╡п╤п╦п╡п╟п╫п╬пЁп╬ п╨п╬п╢я┐
 Name:		w3c-libwww
 Version:	5.4.0
 Release:	6
@@ -32,45 +32,45 @@ The purpose of libwww is to provide a highly optimized HTTP sample
 implementation as well as other Internet protocols and to serve as a
 testbed for protocol experiments.
 
-%description -l pl
-Libwww jest bibliotek╠ WWW ogСlnego przeznaczenia napisan╠ w C dla
-UniksСw oraz Windows. Z wysoko rozszerzalnym i warstwowym API, mo©e
-mieФ zastosowanie w wielu rodzajach aplikacji, w tym klientach,
+%description -l pl.UTF-8
+Libwww jest bibliotekд┘ WWW ogцЁlnego przeznaczenia napisanд┘ w C dla
+UniksцЁw oraz Windows. Z wysoko rozszerzalnym i warstwowym API, moе╪e
+mieд┤ zastosowanie w wielu rodzajach aplikacji, w tym klientach,
 robotach itp. Celem libwww jest dostarczenie dobrze zoptymalizowanej,
-przykЁadowej implementacji HTTP, a tak©e innych protokoЁСw
-internetowych, oraz ╤rodowiska testowego do eksperymentСw z
-protokoЁami.
+przykе┌adowej implementacji HTTP, a takе╪e innych protokoе┌цЁw
+internetowych, oraz е⌡rodowiska testowego do eksperymentцЁw z
+protokoе┌ami.
 
-%description -l pt_BR
-A libwww И uma API web de propСsito geral escrita em C para Unix e
-Windows (Win32). Possui uma API altamente extensМvel e em camadas e
-pode acomodar muitos tipos diferentes de aplicaГУes, incluindo
-clientes, robТs, etc. O propСsito da libwww И fornecer uma
-implementaГЦo HTTP exemplo altamente otimizada para servidor como um
-ambiente de testes para experimentaГУes com protocolos.
+%description -l pt_BR.UTF-8
+A libwww ц╘ uma API web de propцЁsito geral escrita em C para Unix e
+Windows (Win32). Possui uma API altamente extensц╜vel e em camadas e
+pode acomodar muitos tipos diferentes de aplicaц╖ц╣es, incluindo
+clientes, robц╢s, etc. O propцЁsito da libwww ц╘ fornecer uma
+implementaц╖цёo HTTP exemplo altamente otimizada para servidor como um
+ambiente de testes para experimentaц╖ц╣es com protocolos.
 
-%description -l ru
-Libwww - это Web API общего назначения, написанные на C для Unix и
-Windows (Win32). Имея расширяемые многоуровневые API, она пригодна для
-построения множества различных типов приложений включая клиентов,
-роботов etc. Libwww является примером высокооптимизированной
-реализации HTTP и других Интернет-протоколов и тестовой средой для
-экспериментов с протоколами.
+%description -l ru.UTF-8
+Libwww - я█я┌п╬ Web API п╬п╠я┴п╣пЁп╬ п╫п╟п╥п╫п╟я┤п╣п╫п╦я▐, п╫п╟п©п╦я│п╟п╫п╫я▀п╣ п╫п╟ C п╢п╩я▐ Unix п╦
+Windows (Win32). п≤п╪п╣я▐ я─п╟я│я┬п╦я─я▐п╣п╪я▀п╣ п╪п╫п╬пЁп╬я┐я─п╬п╡п╫п╣п╡я▀п╣ API, п╬п╫п╟ п©я─п╦пЁп╬п╢п╫п╟ п╢п╩я▐
+п©п╬я│я┌я─п╬п╣п╫п╦я▐ п╪п╫п╬п╤п╣я│я┌п╡п╟ я─п╟п╥п╩п╦я┤п╫я▀я┘ я┌п╦п©п╬п╡ п©я─п╦п╩п╬п╤п╣п╫п╦п╧ п╡п╨п╩я▌я┤п╟я▐ п╨п╩п╦п╣п╫я┌п╬п╡,
+я─п╬п╠п╬я┌п╬п╡ etc. Libwww я▐п╡п╩я▐п╣я┌я│я▐ п©я─п╦п╪п╣я─п╬п╪ п╡я▀я│п╬п╨п╬п╬п©я┌п╦п╪п╦п╥п╦я─п╬п╡п╟п╫п╫п╬п╧
+я─п╣п╟п╩п╦п╥п╟я├п╦п╦ HTTP п╦ п╢я─я┐пЁп╦я┘ п≤п╫я┌п╣я─п╫п╣я┌-п©я─п╬я┌п╬п╨п╬п╩п╬п╡ п╦ я┌п╣я│я┌п╬п╡п╬п╧ я│я─п╣п╢п╬п╧ п╢п╩я▐
+я█п╨я│п©п╣я─п╦п╪п╣п╫я┌п╬п╡ я│ п©я─п╬я┌п╬п╨п╬п╩п╟п╪п╦.
 
-%description -l uk
-Libwww - це Web API загального призначення, написан╕ на C для Unix та
-Windows (Win32). Маючи розширюван╕ багатор╕внев╕ API, вона придатна
-для побудови велико╖ к╕лькост╕ р╕зних р╕зних тип╕в прикладних програм
-включаючи кл╕╓нт╕в, робот╕в etc. Libwww ╓ прикладом
-високооптим╕зовано╖ реал╕зац╕╖ HTTP та ╕нших ╤нтернет-протокол╕в та
-тестовим середовищем для експеримент╕в з протоколами.
+%description -l uk.UTF-8
+Libwww - я├п╣ Web API п╥п╟пЁп╟п╩я▄п╫п╬пЁп╬ п©я─п╦п╥п╫п╟я┤п╣п╫п╫я▐, п╫п╟п©п╦я│п╟п╫я√ п╫п╟ C п╢п╩я▐ Unix я┌п╟
+Windows (Win32). п°п╟я▌я┤п╦ я─п╬п╥я┬п╦я─я▌п╡п╟п╫я√ п╠п╟пЁп╟я┌п╬я─я√п╡п╫п╣п╡я√ API, п╡п╬п╫п╟ п©я─п╦п╢п╟я┌п╫п╟
+п╢п╩я▐ п©п╬п╠я┐п╢п╬п╡п╦ п╡п╣п╩п╦п╨п╬я≈ п╨я√п╩я▄п╨п╬я│я┌я√ я─я√п╥п╫п╦я┘ я─я√п╥п╫п╦я┘ я┌п╦п©я√п╡ п©я─п╦п╨п╩п╟п╢п╫п╦я┘ п©я─п╬пЁя─п╟п╪
+п╡п╨п╩я▌я┤п╟я▌я┤п╦ п╨п╩я√я■п╫я┌я√п╡, я─п╬п╠п╬я┌я√п╡ etc. Libwww я■ п©я─п╦п╨п╩п╟п╢п╬п╪
+п╡п╦я│п╬п╨п╬п╬п©я┌п╦п╪я√п╥п╬п╡п╟п╫п╬я≈ я─п╣п╟п╩я√п╥п╟я├я√я≈ HTTP я┌п╟ я√п╫я┬п╦я┘ п├п╫я┌п╣я─п╫п╣я┌-п©я─п╬я┌п╬п╨п╬п╩я√п╡ я┌п╟
+я┌п╣я│я┌п╬п╡п╦п╪ я│п╣я─п╣п╢п╬п╡п╦я┴п╣п╪ п╢п╩я▐ п╣п╨я│п©п╣я─п╦п╪п╣п╫я┌я√п╡ п╥ п©я─п╬я┌п╬п╨п╬п╩п╟п╪п╦.
 
 %package devel
 Summary:	Header files for programs that use libwww
-Summary(pl):	Pliki nagЁСwkowe dla programСw u©ywaj╠cych libwww
-Summary(pt_BR):	Arquivos necessАrios para desenvolvimento com a libwww
-Summary(ru):	Библиотеки и хедеры для программ, которые используют libwww
-Summary(uk):	Б╕бл╕отеки та хедери для програм, що використовують libwww
+Summary(pl.UTF-8):   Pliki nagе┌цЁwkowe dla programцЁw uе╪ywajд┘cych libwww
+Summary(pt_BR.UTF-8):   Arquivos necessц║rios para desenvolvimento com a libwww
+Summary(ru.UTF-8):   п▒п╦п╠п╩п╦п╬я┌п╣п╨п╦ п╦ я┘п╣п╢п╣я─я▀ п╢п╩я▐ п©я─п╬пЁя─п╟п╪п╪, п╨п╬я┌п╬я─я▀п╣ п╦я│п©п╬п╩я▄п╥я┐я▌я┌ libwww
+Summary(uk.UTF-8):   п▒я√п╠п╩я√п╬я┌п╣п╨п╦ я┌п╟ я┘п╣п╢п╣я─п╦ п╢п╩я▐ п©я─п╬пЁя─п╟п╪, я┴п╬ п╡п╦п╨п╬я─п╦я│я┌п╬п╡я┐я▌я┌я▄ libwww
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	expat-devel
@@ -80,41 +80,41 @@ Requires:	zlib-devel
 %description devel
 Header files for libwww, which are available as public libraries.
 
-%description devel -l pl
-Pliki nagЁСwkowe dla libwww.
+%description devel -l pl.UTF-8
+Pliki nagе┌цЁwkowe dla libwww.
 
-%description devel -l pt_BR
-Bibliotecas e arquivos de inclusЦo para desenvolvimento baseado na
-libwww, que estА disponМvel ao pЗblico.
+%description devel -l pt_BR.UTF-8
+Bibliotecas e arquivos de inclusцёo para desenvolvimento baseado na
+libwww, que estц║ disponц╜vel ao pц╨blico.
 
-%description devel -l ru
-Библиотеки разработчика и хедеры для libwww.
+%description devel -l ru.UTF-8
+п▒п╦п╠п╩п╦п╬я┌п╣п╨п╦ я─п╟п╥я─п╟п╠п╬я┌я┤п╦п╨п╟ п╦ я┘п╣п╢п╣я─я▀ п╢п╩я▐ libwww.
 
-%description devel -l uk
-Б╕бл╕отеки програм╕ста та хедери для libwww.
+%description devel -l uk.UTF-8
+п▒я√п╠п╩я√п╬я┌п╣п╨п╦ п©я─п╬пЁя─п╟п╪я√я│я┌п╟ я┌п╟ я┘п╣п╢п╣я─п╦ п╢п╩я▐ libwww.
 
 %package static
 Summary:	Static libwww libraries
-Summary(pl):	Statyczne biblioteki libwww
-Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com w3c-libwww
+Summary(pl.UTF-8):   Statyczne biblioteki libwww
+Summary(pt_BR.UTF-8):   Bibliotecas estц║ticas para desenvolvimento com w3c-libwww
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libwww libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczne biblioteki libwww.
 
-%description static -l pt_BR
-Bibliotecas estАticas para desenvolvimento com w3c-libwww
+%description static -l pt_BR.UTF-8
+Bibliotecas estц║ticas para desenvolvimento com w3c-libwww
 
 %package apps
 Summary:	Applications built using Libwww web library: e.g. Robot, command line tool, etc
-Summary(pl):	Aplikacje u©ywaj╠ce Libwww: Robot, narzЙdzie command-line itp
-Summary(pt_BR):	Aplicativos construМdos usando a libwww
-Summary(ru):	Приложения с использованием Libwww - робот, утилита командной строки и т.п.
-Summary(uk):	Програми з використанням Libwww - робот, утил╕та командного рядка ╕ т.╕.
+Summary(pl.UTF-8):   Aplikacje uе╪ywajд┘ce Libwww: Robot, narzд≥dzie command-line itp
+Summary(pt_BR.UTF-8):   Aplicativos construц╜dos usando a libwww
+Summary(ru.UTF-8):   п÷я─п╦п╩п╬п╤п╣п╫п╦я▐ я│ п╦я│п©п╬п╩я▄п╥п╬п╡п╟п╫п╦п╣п╪ Libwww - я─п╬п╠п╬я┌, я┐я┌п╦п╩п╦я┌п╟ п╨п╬п╪п╟п╫п╢п╫п╬п╧ я│я┌я─п╬п╨п╦ п╦ я┌.п©.
+Summary(uk.UTF-8):   п÷я─п╬пЁя─п╟п╪п╦ п╥ п╡п╦п╨п╬я─п╦я│я┌п╟п╫п╫я▐п╪ Libwww - я─п╬п╠п╬я┌, я┐я┌п╦п╩я√я┌п╟ п╨п╬п╪п╟п╫п╢п╫п╬пЁп╬ я─я▐п╢п╨п╟ я√ я┌.я√.
 Group:		Applications/Networking
 Requires:	%{name} = %{version}-%{release}
 
@@ -129,51 +129,51 @@ line mode web browser; often useful to convert to ascii text.
 Currently unavailable until someone updates it to some new interfaces.
 (hint, hint...)
 
-%description apps -l pl
-Aplikacje sieciowe zbudowane przy u©yciu libwww: Robot, narzЙdzie
-comman-line, liniowa przegl╠darka. Robot mo©e przechodziФ po stronach
-szybciej i z mniejszym obci╠©eniem ni© inne znane roboty, dziЙki
-wykorzystywaniu pipeliningu i HTTP/1.1. NarzЙdzie command-line (w3c)
-jest u©yteczne do manipulowania serwisami WWW, ktСre maj╠
-zaimplementowane co╤ wiЙcej ni© HTTP GET (np. PUT, POST...).
-Przegl╠darka liniowa jest u©yteczna gЁСwnie do konwersji do zwykЁego
-tekstu. Aktualnie niedostЙpna dopСki kto╤ nie przystosuje jej do
+%description apps -l pl.UTF-8
+Aplikacje sieciowe zbudowane przy uе╪yciu libwww: Robot, narzд≥dzie
+comman-line, liniowa przeglд┘darka. Robot moе╪e przechodziд┤ po stronach
+szybciej i z mniejszym obciд┘е╪eniem niе╪ inne znane roboty, dziд≥ki
+wykorzystywaniu pipeliningu i HTTP/1.1. Narzд≥dzie command-line (w3c)
+jest uе╪yteczne do manipulowania serwisami WWW, ktцЁre majд┘
+zaimplementowane coе⌡ wiд≥cej niе╪ HTTP GET (np. PUT, POST...).
+Przeglд┘darka liniowa jest uе╪yteczna gе┌цЁwnie do konwersji do zwykе┌ego
+tekstu. Aktualnie niedostд≥pna dopцЁki ktoе⌡ nie przystosuje jej do
 nowego interfejsu (hint, hint...).
 
-%description apps -l pt_BR
-Aplicativos WEB utilizando a libwww: Robot, Ferramenta de execuГЦo de
-linha de comando, navegaГЦo por linha de comando. Robot pode navegar
+%description apps -l pt_BR.UTF-8
+Aplicativos WEB utilizando a libwww: Robot, Ferramenta de execuц╖цёo de
+linha de comando, navegaц╖цёo por linha de comando. Robot pode navegar
 rapidamente e com baixa carga no sistema.
 
-A Ferramenta de execuГЦo de linha de comando (w3c) И muito Зtil para
-manipulaГЦo de sМtios Web que implementam mais do que um HTTP GET (por
+A Ferramenta de execuц╖цёo de linha de comando (w3c) ц╘ muito ц╨til para
+manipulaц╖цёo de sц╜tios Web que implementam mais do que um HTTP GET (por
 exemplo, PUT, POST, etc.)
 
-%description apps -l ru
-Web-приложения, построенные с использованием Libwww - робот, утилита
-командной строки, строчный браузер. Робот может бродить по web-сайтам
-быстрее и с меньшей нагрузкой чем любая другая известная нам бродилка
-из-за исключительной конвейеризации и использования HTTP/1.1.
+%description apps -l ru.UTF-8
+Web-п©я─п╦п╩п╬п╤п╣п╫п╦я▐, п©п╬я│я┌я─п╬п╣п╫п╫я▀п╣ я│ п╦я│п©п╬п╩я▄п╥п╬п╡п╟п╫п╦п╣п╪ Libwww - я─п╬п╠п╬я┌, я┐я┌п╦п╩п╦я┌п╟
+п╨п╬п╪п╟п╫п╢п╫п╬п╧ я│я┌я─п╬п╨п╦, я│я┌я─п╬я┤п╫я▀п╧ п╠я─п╟я┐п╥п╣я─. п═п╬п╠п╬я┌ п╪п╬п╤п╣я┌ п╠я─п╬п╢п╦я┌я▄ п©п╬ web-я│п╟п╧я┌п╟п╪
+п╠я▀я│я┌я─п╣п╣ п╦ я│ п╪п╣п╫я▄я┬п╣п╧ п╫п╟пЁя─я┐п╥п╨п╬п╧ я┤п╣п╪ п╩я▌п╠п╟я▐ п╢я─я┐пЁп╟я▐ п╦п╥п╡п╣я│я┌п╫п╟я▐ п╫п╟п╪ п╠я─п╬п╢п╦п╩п╨п╟
+п╦п╥-п╥п╟ п╦я│п╨п╩я▌я┤п╦я┌п╣п╩я▄п╫п╬п╧ п╨п╬п╫п╡п╣п╧п╣я─п╦п╥п╟я├п╦п╦ п╦ п╦я│п©п╬п╩я▄п╥п╬п╡п╟п╫п╦я▐ HTTP/1.1.
 
-Утилита командной строки (w3c) очень полезна для работы с web-сайтами,
-которые реализуют больше команд чем просто HTTP GET (например, PUT,
+пёя┌п╦п╩п╦я┌п╟ п╨п╬п╪п╟п╫п╢п╫п╬п╧ я│я┌я─п╬п╨п╦ (w3c) п╬я┤п╣п╫я▄ п©п╬п╩п╣п╥п╫п╟ п╢п╩я▐ я─п╟п╠п╬я┌я▀ я│ web-я│п╟п╧я┌п╟п╪п╦,
+п╨п╬я┌п╬я─я▀п╣ я─п╣п╟п╩п╦п╥я┐я▌я┌ п╠п╬п╩я▄я┬п╣ п╨п╬п╪п╟п╫п╢ я┤п╣п╪ п©я─п╬я│я┌п╬ HTTP GET (п╫п╟п©я─п╦п╪п╣я─, PUT,
 POST, etc.).
 
-Строчный браузер - это минимальный web-браузер, работающий в командном
-режиме. Часто полезен для преобразования в текстовый формат.
+п║я┌я─п╬я┤п╫я▀п╧ п╠я─п╟я┐п╥п╣я─ - я█я┌п╬ п╪п╦п╫п╦п╪п╟п╩я▄п╫я▀п╧ web-п╠я─п╟я┐п╥п╣я─, я─п╟п╠п╬я┌п╟я▌я┴п╦п╧ п╡ п╨п╬п╪п╟п╫п╢п╫п╬п╪
+я─п╣п╤п╦п╪п╣. п╖п╟я│я┌п╬ п©п╬п╩п╣п╥п╣п╫ п╢п╩я▐ п©я─п╣п╬п╠я─п╟п╥п╬п╡п╟п╫п╦я▐ п╡ я┌п╣п╨я│я┌п╬п╡я▀п╧ я└п╬я─п╪п╟я┌.
 
-%description apps -l uk
-Web-програми, побудован╕ з використанням Libwww - робот, утил╕та
-командно╖ стр╕чки, командний браузер. Робот може ходити по web-сайтах
-швидше та з меншим завантаженням н╕ж будь-яка в╕дома нам ходилка
-завдяки виключн╕й конвей╓ризац╕╖ та використанню HTTP/1.1.
+%description apps -l uk.UTF-8
+Web-п©я─п╬пЁя─п╟п╪п╦, п©п╬п╠я┐п╢п╬п╡п╟п╫я√ п╥ п╡п╦п╨п╬я─п╦я│я┌п╟п╫п╫я▐п╪ Libwww - я─п╬п╠п╬я┌, я┐я┌п╦п╩я√я┌п╟
+п╨п╬п╪п╟п╫п╢п╫п╬я≈ я│я┌я─я√я┤п╨п╦, п╨п╬п╪п╟п╫п╢п╫п╦п╧ п╠я─п╟я┐п╥п╣я─. п═п╬п╠п╬я┌ п╪п╬п╤п╣ я┘п╬п╢п╦я┌п╦ п©п╬ web-я│п╟п╧я┌п╟я┘
+я┬п╡п╦п╢я┬п╣ я┌п╟ п╥ п╪п╣п╫я┬п╦п╪ п╥п╟п╡п╟п╫я┌п╟п╤п╣п╫п╫я▐п╪ п╫я√п╤ п╠я┐п╢я▄-я▐п╨п╟ п╡я√п╢п╬п╪п╟ п╫п╟п╪ я┘п╬п╢п╦п╩п╨п╟
+п╥п╟п╡п╢я▐п╨п╦ п╡п╦п╨п╩я▌я┤п╫я√п╧ п╨п╬п╫п╡п╣п╧я■я─п╦п╥п╟я├я√я≈ я┌п╟ п╡п╦п╨п╬я─п╦я│я┌п╟п╫п╫я▌ HTTP/1.1.
 
-Утил╕та командного рядка (w3c) дуже корисна для роботи з web-сайтами,
-як╕ реал╕зують б╕льше команд н╕ж просто HTTP GET (наприклад, PUT,
+пёя┌п╦п╩я√я┌п╟ п╨п╬п╪п╟п╫п╢п╫п╬пЁп╬ я─я▐п╢п╨п╟ (w3c) п╢я┐п╤п╣ п╨п╬я─п╦я│п╫п╟ п╢п╩я▐ я─п╬п╠п╬я┌п╦ п╥ web-я│п╟п╧я┌п╟п╪п╦,
+я▐п╨я√ я─п╣п╟п╩я√п╥я┐я▌я┌я▄ п╠я√п╩я▄я┬п╣ п╨п╬п╪п╟п╫п╢ п╫я√п╤ п©я─п╬я│я┌п╬ HTTP GET (п╫п╟п©я─п╦п╨п╩п╟п╢, PUT,
 POST, etc.).
 
-Командний браузер - це м╕н╕мальний web-браузер, що працю╓ в командному
-режим╕. Часто корисний для перетворення у текстовий формат.
+п п╬п╪п╟п╫п╢п╫п╦п╧ п╠я─п╟я┐п╥п╣я─ - я├п╣ п╪я√п╫я√п╪п╟п╩я▄п╫п╦п╧ web-п╠я─п╟я┐п╥п╣я─, я┴п╬ п©я─п╟я├я▌я■ п╡ п╨п╬п╪п╟п╫п╢п╫п╬п╪я┐
+я─п╣п╤п╦п╪я√. п╖п╟я│я┌п╬ п╨п╬я─п╦я│п╫п╦п╧ п╢п╩я▐ п©п╣я─п╣я┌п╡п╬я─п╣п╫п╫я▐ я┐ я┌п╣п╨я│я┌п╬п╡п╦п╧ я└п╬я─п╪п╟я┌.
 
 %prep
 %setup -q
