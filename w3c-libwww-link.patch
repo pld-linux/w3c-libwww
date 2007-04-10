@@ -1,5 +1,5 @@
---- w3c-libwww-5.4.0.org/Library/src/Makefile.am	2006-10-01 02:39:08.740710000 +0200
-+++ w3c-libwww-5.4.0/Library/src/Makefile.am	2006-10-01 02:40:53.607263750 +0200
+--- w3c-libwww-5.4.0/Library/src/Makefile.am.orig	2007-04-10 19:22:56.706644924 +0200
++++ w3c-libwww-5.4.0/Library/src/Makefile.am	2007-04-10 19:23:14.659668008 +0200
 @@ -6,23 +6,23 @@
  	libwwwutils.la \
  	libwwwcore.la \
@@ -171,7 +171,7 @@
  libwwwmux_la_SOURCES = \
  	WWWMux.h \
  	HTDemux.h \
-@@ -348,6 +384,8 @@
+@@ -348,12 +384,16 @@
  	HTMuxTx.h \
  	HTMuxTx.c
  
@@ -180,7 +180,15 @@
  libwwwdav_la_SOURCES = \
          HTDAV.h \
          HTDAV.c
-@@ -363,7 +401,7 @@
+ 
+ libwwwdav_la_LDFLAGS = -rpath $(libdir)
+ 
++libwwwdav_la_LIBADD = libwwwcore.la libwwwapp.la
++
+ libwwwxml_la_SOURCES = \
+ 	WWWXML.h \
+ 	HTRDF.h \
+@@ -363,7 +403,7 @@
  
  libwwwxml_la_LDFLAGS = -rpath $(libdir)
  
@@ -189,7 +197,7 @@
  
  libwwwzip_la_SOURCES = \
  	WWWZip.h \
-@@ -371,6 +409,8 @@
+@@ -371,6 +411,8 @@
  	HTZip.h \
  	HTZip.c
  
