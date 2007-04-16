@@ -1,0 +1,4 @@
+- enabled libwwwdav (--with-dav)
+- updated link patch to fix libwwwdav linking
+- avoid linking with librx
+- release 8
