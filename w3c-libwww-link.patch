@@ -107,9 +107,12 @@
  libwwwhttp_la_SOURCES = \
  	WWWHTTP.h \
  	HTTPUtil.h \
-@@ -254,6 +271,9 @@
+@@ -254,8 +271,11 @@
+ 	HTPEP.c
+ 
  libwwwhttp_la_DEPENDENCIES = \
- 	../../modules/md5/libmd5.la
+-	../../modules/md5/libmd5.la
++	../../modules/md5/libmd5.la libwwwmime.la libwwwutils.la libwwwcore.la
  
 +libwwwhttp_la_LIBADD = \
 +	../../modules/md5/libmd5.la libwwwmime.la libwwwutils.la libwwwcore.la
