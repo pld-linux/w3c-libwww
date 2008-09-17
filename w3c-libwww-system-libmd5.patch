@@ -1,0 +1,131 @@
+--- w3c-libwww-5.4.0/configure.in.orig	2008-09-17 13:29:33.000000000 +0200
++++ w3c-libwww-5.4.0/configure.in	2008-09-17 13:47:03.000000000 +0200
+@@ -541,14 +541,14 @@
+     AC_DEFINE(HT_MD5)
+     WWWMD5="libmd5.la"
+     LWWWMD5="-lmd5"
+-    LIBWWWMD5='${top_builddir}/modules/md5/libmd5.la'
++    LIBWWWMD5='$(libdir)/libmd5.la'
+     ;;
+   esac ],
+   AC_MSG_RESULT(yes)
+   AC_DEFINE(HT_MD5)
+   WWWMD5="libmd5.la"
+   LWWWMD5="-lmd5"
+-  LIBWWWMD5='${top_builddir}/modules/md5/libmd5.la'
++  LIBWWWMD5='$(libdir)/libmd5.la'
+ )
+ AC_SUBST(WWWMD5)
+ AC_SUBST(LWWWMD5)
+--- w3c-libwww-5.4.0/Robot/src/Makefile.am.orig	2008-09-17 13:29:33.000000000 +0200
++++ w3c-libwww-5.4.0/Robot/src/Makefile.am	2008-09-17 14:05:35.000000000 +0200
+@@ -20,7 +20,7 @@
+ 	$(top_builddir)/Library/src/libwwwtrans.la \
+ 	$(top_builddir)/Library/src/libwwwcore.la \
+ 	$(top_builddir)/Library/src/libwwwutils.la \
+-	-lm @LIBWWWXML@ @LIBWWWZIP@ @LIBWWWWAIS@ @LIBWWWSQL@ @LIBWWWMD5@
++	-lm @LIBWWWXML@ @LIBWWWZIP@ @LIBWWWWAIS@ @LIBWWWSQL@
+ 
+ SUBDIRS = windows
+ 
+@@ -66,7 +66,6 @@
+ 	$(CC) $(LDFLAGS) -o purify $(webbot_OBJECTS) \
+ 	-lm -lexpat \
+ 	../../Library/src/.libs/libwww.a \
+-	../../modules/md5/.libs/libmd5.a \
+ 	$(LIBS)
+ 
+ 
+--- w3c-libwww-5.4.0/Library/Examples/Makefile.am.orig	2008-09-17 13:29:33.000000000 +0200
++++ w3c-libwww-5.4.0/Library/Examples/Makefile.am	2008-09-17 14:06:04.000000000 +0200
+@@ -28,7 +28,7 @@
+ 	../src/libwwwutils.la \
+         @LIBWWWDAV@ \
+ 	@LIBWWWSSL@ \
+-	-lm @LIBWWWZIP@ @LIBWWWWAIS@ @LIBWWWSQL@ @LIBWWWMD5@
++	-lm @LIBWWWZIP@ @LIBWWWWAIS@ @LIBWWWSQL@
+ 
+ INCLUDES = \
+ 	-I$(srcdir)/../src \
+@@ -66,7 +66,6 @@
+ 	../src/.libs/libwwwutils.a \
+         ../src/.libs/libwwwdav.a \
+ 	../src/.libs/libwwwzip.a \
+-	../../modules/md5/.libs/libmd5.a \
+ 	$(LIBS)
+ 
+ 
+--- w3c-libwww-5.4.0/Library/src/Makefile.am.orig	2008-09-17 13:29:33.000000000 +0200
++++ w3c-libwww-5.4.0/Library/src/Makefile.am	2008-09-17 14:08:06.000000000 +0200
+@@ -269,10 +269,10 @@
+ 	HTPEP.c
+ 
+ libwwwhttp_la_DEPENDENCIES = \
+-	../../modules/md5/libmd5.la libwwwmime.la libwwwutils.la libwwwcore.la
++	@LIBWWWMD5@ libwwwmime.la libwwwutils.la libwwwcore.la
+ 
+ libwwwhttp_la_LIBADD = \
+-	../../modules/md5/libmd5.la libwwwmime.la libwwwutils.la libwwwcore.la
++	@LIBWWWMD5@ libwwwmime.la libwwwutils.la libwwwcore.la
+ 
+ libwwwnews_la_SOURCES = \
+ 	WWWNews.h \
+@@ -425,10 +425,6 @@
+ 
+ libwwwsql_la_LDFLAGS = -rpath $(libdir)
+ 
+-INCLUDES = \
+-	-I/usr/local/include \
+-	-I${top_srcdir}/modules/md5
+-
+ BUILT_SOURCES = \
+ 	wwwsys.h \
+ 	HTAABrow.h \
+--- w3c-libwww-5.4.0/Library/src/HTDigest.h.orig	2002-06-12 11:31:20.000000000 +0200
++++ w3c-libwww-5.4.0/Library/src/HTDigest.h	2008-09-17 13:42:22.000000000 +0200
+@@ -60,7 +60,7 @@
+ typedef struct _HTDigestContext {
+   int algorithm;          
+     union { 
+-           MD5_CTX md5;
++           md5_state_t md5;
+     } context;
+ } HTDigestContext;
+ 
+--- w3c-libwww-5.4.0/Library/src/HTDigest.c.orig	1999-02-05 18:31:45.000000000 +0100
++++ w3c-libwww-5.4.0/Library/src/HTDigest.c	2008-09-17 13:44:19.000000000 +0200
+@@ -29,7 +29,7 @@
+ 
+     switch (digesttype) {
+       case HTDaMD5:
+-	  MD5Init (&context->context.md5);
++	  md5_init (&context->context.md5);
+ 	  break;
+       default:
+           return NO;
+@@ -43,7 +43,7 @@
+     if (context) {
+ 	switch (context->algorithm) {
+ 	case HTDaMD5:
+-	    MD5Update (&context->context.md5, (unsigned char *) input,
++	    md5_append (&context->context.md5, (unsigned char *) input,
+ 		       inputLen);
+ 	    break;
+ 	default:
+@@ -60,7 +60,7 @@
+     if (context) {
+ 	switch (context->algorithm) {
+ 	case HTDaMD5:
+-	    MD5Final (digest, &context->context.md5);
++	    md5_finish (&context->context.md5, digest);
+ 	    break;
+ 	default:
+ 	    return NO;
+--- w3c-libwww-5.4.0/modules/Makefile.am.orig	2008-09-17 14:10:11.000000000 +0200
++++ w3c-libwww-5.4.0/modules/Makefile.am	2008-09-17 14:27:10.000000000 +0200
+@@ -5,5 +5,4 @@
+ EXTRA_DIST = \
+ 	$(DOCS)
+ 
+-SUBDIRS = md5
+ 
