@@ -5,7 +5,7 @@ Summary(ru.UTF-8):	HTTP-библиотека общеупотребительн�
 Summary(uk.UTF-8):	HTTP-бібліотека загальновживаного коду
 Name:		w3c-libwww
 Version:	5.4.0
-Release:	8
+Release:	9
 License:	W3C (see: http://www.w3.org/Consortium/Legal/copyright-software.html)
 Group:		Libraries
 Source0:	http://www.w3.org/Library/Distribution/%{name}-%{version}.tgz
@@ -15,11 +15,13 @@ Patch1:		%{name}-am15.patch
 Patch2:		%{name}-system-expat.patch
 Patch3:		%{name}-amfix.patch
 Patch4:		%{name}-link.patch
+Patch5:		%{name}-system-libmd5.patch
 URL:		http://www.w3.org/Library/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	expat-devel
 BuildRequires:	libtool
+BuildRequires:	libmd5-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -182,6 +184,7 @@ POST, etc.).
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 %{__libtoolize}
@@ -215,7 +218,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc COPYRIGHT.html ChangeLog LICENSE.html
 %attr(755,root,root) %{_libdir}/libwww*.so.*.*
-%attr(755,root,root) %{_libdir}/libmd5.so.*.*
 %attr(755,root,root) %{_libdir}/libpics.so.*.*
 %{_datadir}/w3c-libwww
 
@@ -229,10 +231,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/libwww-config
 %attr(755,root,root) %{_libdir}/libwww*.so
-%attr(755,root,root) %{_libdir}/libmd5.so
 %attr(755,root,root) %{_libdir}/libpics.so
 %{_libdir}/libwww*.la
-%{_libdir}/libmd5.la
 %{_libdir}/libpics.la
 %{_includedir}/wwwconf.h
 %{_includedir}/w3c-libwww
@@ -240,5 +240,4 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libwww*.a
-%{_libdir}/libmd5.a
 %{_libdir}/libpics.a
