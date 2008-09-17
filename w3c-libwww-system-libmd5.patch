@@ -5,7 +5,7 @@
      WWWMD5="libmd5.la"
      LWWWMD5="-lmd5"
 -    LIBWWWMD5='${top_builddir}/modules/md5/libmd5.la'
-+    LIBWWWMD5='$(libdir)/libmd5.la'
++    LIBWWWMD5='-lmd5'
      ;;
    esac ],
    AC_MSG_RESULT(yes)
@@ -13,7 +13,7 @@
    WWWMD5="libmd5.la"
    LWWWMD5="-lmd5"
 -  LIBWWWMD5='${top_builddir}/modules/md5/libmd5.la'
-+  LIBWWWMD5='$(libdir)/libmd5.la'
++  LIBWWWMD5='-lmd5'
  )
  AC_SUBST(WWWMD5)
  AC_SUBST(LWWWMD5)
@@ -62,7 +62,7 @@
  
  libwwwhttp_la_DEPENDENCIES = \
 -	../../modules/md5/libmd5.la libwwwmime.la libwwwutils.la libwwwcore.la
-+	@LIBWWWMD5@ libwwwmime.la libwwwutils.la libwwwcore.la
++	libwwwmime.la libwwwutils.la libwwwcore.la
  
  libwwwhttp_la_LIBADD = \
 -	../../modules/md5/libmd5.la libwwwmime.la libwwwutils.la libwwwcore.la
