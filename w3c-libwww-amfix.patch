@@ -1,3 +1,24 @@
+--- w3c-libwww-5.3.2/Library/src/Makefile.am~	Sat Mar  2 06:40:12 2002
++++ w3c-libwww-5.3.2/Library/src/Makefile.am	Sat Mar  2 06:40:12 2002
+@@ -47,8 +47,7 @@
+ 	perl $(top_srcdir)/config/winConfigure.pl $(srcdir)
+     endif
+ 
+-icondir = @icondir@
+-CPPFLAGS := $(CPPFLAGS) -DW3C_ICONS=\"$(icondir)\"
++CPPFLAGS = @CPPFLAGS@ -DW3C_ICONS=\"$(icondir)\"
+ 
+ inc: $(BUILT_SOURCES)
+ 	@echo Generated built sources
+@@ -539,7 +539,7 @@
+ 
+ pkginclude_HEADERS = $(BUILT_SOURCES)
+ 
+-DOCS :=	$(wildcard *.html)
++DOCS =	$(wildcard *.html)
+ 
+ EXTRA_DIST = \
+ 	$(BUILT_SOURCES) \
 --- w3c-libwww-5.4.0/Makefile.am.orig	2002-06-12 11:32:59.000000000 +0200
 +++ w3c-libwww-5.4.0/Makefile.am	2003-10-23 00:32:42.756648688 +0200
 @@ -42,7 +42,6 @@
@@ -20,3 +41,14 @@
  SUFFIXES = .html
  
  DEPENDENCIES = \
+diff -Nur w3c-libwww-5.4.0.orig/Library/src/Makefile.am w3c-libwww-5.4.0/Library/src/Makefile.am
+--- w3c-libwww-5.4.0.orig/Library/src/Makefile.am	2009-09-02 07:56:48.000000000 +0200
++++ w3c-libwww-5.4.0/Library/src/Makefile.am	2009-09-02 07:57:43.000000000 +0200
+@@ -440,7 +440,6 @@
+ 	HTBInit.h \
+ 	HTBTree.h \
+ 	HTBind.h \
+-	HTBind.h \
+ 	HTBound.h \
+ 	HTBufWrt.h \
+ 	HTCache.h \

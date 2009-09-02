@@ -11,12 +11,11 @@ Group:		Libraries
 Source0:	http://www.w3.org/Library/Distribution/%{name}-%{version}.tgz
 # Source0-md5:	c3734ca6caa405707e134cc8c6d7e422
 Patch0:		%{name}-ac25x.patch
-Patch1:		%{name}-am15.patch
-Patch2:		%{name}-system-expat.patch
-Patch3:		%{name}-amfix.patch
-Patch4:		%{name}-link.patch
-Patch5:		%{name}-system-libmd5.patch
-Patch6:		%{name}-ssl.patch
+Patch1:		%{name}-system-expat.patch
+Patch2:		%{name}-amfix.patch
+Patch3:		%{name}-link.patch
+Patch4:		%{name}-system-libmd5.patch
+Patch5:		%{name}-ssl.patch
 URL:		http://www.w3.org/Library/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -186,7 +185,6 @@ POST, etc.).
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
 
 %build
 %{__libtoolize}
@@ -207,7 +205,7 @@ POST, etc.).
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
+%{__make} -j1 install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
