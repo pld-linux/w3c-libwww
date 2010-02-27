@@ -218,9 +218,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc COPYRIGHT.html ChangeLog LICENSE.html
 %attr(755,root,root) %{_libdir}/libwww*.so.*.*.*
-%ghost %attr(755,root,root) %{_libdir}/libwww*.so.0
+%attr(755,root,root) %ghost %{_libdir}/libwww*.so.0
 %attr(755,root,root) %{_libdir}/libpics.so.*.*.*
-%ghost %attr(755,root,root) %{_libdir}/libpics.so.0
+%attr(755,root,root) %ghost %{_libdir}/libpics.so.0
 %{_datadir}/w3c-libwww
 
 %files apps
