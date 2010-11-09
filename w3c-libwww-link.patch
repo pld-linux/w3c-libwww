@@ -1,5 +1,5 @@
---- w3c-libwww-5.4.0/Library/src/Makefile.am.orig	2007-04-10 19:22:56.706644924 +0200
-+++ w3c-libwww-5.4.0/Library/src/Makefile.am	2007-04-10 19:23:14.659668008 +0200
+--- w3c-libwww-5.4.0/Library/src/Makefile.am.orig	2010-11-09 16:19:08.655724837 +0100
++++ w3c-libwww-5.4.0/Library/src/Makefile.am	2010-11-09 16:35:05.816043461 +0100
 @@ -6,23 +6,23 @@
  	libwwwutils.la \
  	libwwwcore.la \
@@ -107,19 +107,6 @@
  libwwwhttp_la_SOURCES = \
  	WWWHTTP.h \
  	HTTPUtil.h \
-@@ -254,8 +271,11 @@
- 	HTPEP.c
- 
- libwwwhttp_la_DEPENDENCIES = \
--	../../modules/md5/libmd5.la
-+	../../modules/md5/libmd5.la libwwwmime.la libwwwutils.la libwwwcore.la
- 
-+libwwwhttp_la_LIBADD = \
-+	../../modules/md5/libmd5.la libwwwmime.la libwwwutils.la libwwwcore.la
-+
- libwwwnews_la_SOURCES = \
- 	WWWNews.h \
- 	HTNDir.h \
 @@ -265,11 +285,15 @@
  	HTNewsRq.h \
  	HTNewsRq.c
@@ -150,7 +137,7 @@
  	HTDir.c
  
 +libwwwdir_la_LIBADD = \
-+	libwwwhtml.la libwwwutils.la libwwwcore.la
++	libwwwhtml.la libwwwutils.la libwwwcore.la HTBind.lo
 +
  libwwwapp_la_SOURCES = \
  	WWWApp.h \
@@ -209,3 +196,27 @@
  libwwwzip_la_LDFLAGS = -rpath $(libdir)
  
  libwwwsql_la_SOURCES = \
+--- w3c-libwww-5.4.0/Library/src/SSL/Makefile.am.orig	2010-11-09 16:38:48.992046302 +0100
++++ w3c-libwww-5.4.0/Library/src/SSL/Makefile.am	2010-11-09 16:44:35.662364395 +0100
+@@ -39,7 +39,8 @@
+ 	HTSSLhttps.h \
+ 	HTSSLhttps.c
+ 
+-libwwwssl_la_LDFLAGS = -rpath $(libdir)
++libwwwssl_la_LDFLAGS = -rpath $(libdir) \
++		       ../libwwwcore.la ../libwwwapp.la ../libwwwhttp.la
+ 
+ LDADD = \
+ 	libwwwssl.la
+--- w3c-libwww-5.4.0/PICS-client/src/Makefile.am.orig	2010-11-09 16:45:44.105885672 +0100
++++ w3c-libwww-5.4.0/PICS-client/src/Makefile.am	2010-11-09 16:47:56.818021370 +0100
+@@ -30,6 +30,9 @@
+ 	CSMacRed.c	CSMem.c		CSApp.c \
+ 	CSParse.c	CSUsrLst.c	CSUser.c
+ 
++libpics_la_LIBADD = \
++	../../Library/src/libwwwcore.la ../../Library/src/libwwwapp.la
++
+ BUILT_SOURCES = \
+ 	CSLApp.h	CSLUtils.h \
+ 	CSLL.h		CSLLSt.h \

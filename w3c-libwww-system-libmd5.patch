@@ -55,32 +55,6 @@
  	$(LIBS)
  
  
---- w3c-libwww-5.4.0/Library/src/Makefile.am.orig	2008-09-17 13:29:33.000000000 +0200
-+++ w3c-libwww-5.4.0/Library/src/Makefile.am	2008-09-17 14:08:06.000000000 +0200
-@@ -269,10 +269,10 @@
- 	HTPEP.c
- 
- libwwwhttp_la_DEPENDENCIES = \
--	../../modules/md5/libmd5.la libwwwmime.la libwwwutils.la libwwwcore.la
-+	libwwwmime.la libwwwutils.la libwwwcore.la
- 
- libwwwhttp_la_LIBADD = \
--	../../modules/md5/libmd5.la libwwwmime.la libwwwutils.la libwwwcore.la
-+	@LIBWWWMD5@ libwwwmime.la libwwwutils.la libwwwcore.la
- 
- libwwwnews_la_SOURCES = \
- 	WWWNews.h \
-@@ -425,10 +425,6 @@
- 
- libwwwsql_la_LDFLAGS = -rpath $(libdir)
- 
--INCLUDES = \
--	-I/usr/local/include \
--	-I${top_srcdir}/modules/md5
--
- BUILT_SOURCES = \
- 	wwwsys.h \
- 	HTAABrow.h \
 --- w3c-libwww-5.4.0/Library/src/HTDigest.h.orig	2002-06-12 11:31:20.000000000 +0200
 +++ w3c-libwww-5.4.0/Library/src/HTDigest.h	2008-09-17 13:42:22.000000000 +0200
 @@ -60,7 +60,7 @@
@@ -129,3 +103,29 @@
  
 -SUBDIRS = md5
  
+--- w3c-libwww-5.4.0/Library/src/Makefile.am.orig	2010-11-09 17:07:12.876029313 +0100
++++ w3c-libwww-5.4.0/Library/src/Makefile.am	2010-11-09 17:09:21.308695152 +0100
+@@ -269,8 +269,11 @@
+ 	HTPEP.c
+ 
+ libwwwhttp_la_DEPENDENCIES = \
+-	../../modules/md5/libmd5.la
++	libwwwmime.la libwwwutils.la libwwwcore.la
+ 
++libwwwhttp_la_LIBADD = \
++	@LIBWWWMD5@ libwwwmime.la libwwwutils.la libwwwcore.la
++ 
+ libwwwnews_la_SOURCES = \
+ 	WWWNews.h \
+ 	HTNDir.h \
+@@ -422,10 +425,6 @@
+ 
+ libwwwsql_la_LDFLAGS = -rpath $(libdir)
+ 
+-INCLUDES = \
+-	-I/usr/local/include \
+-	-I${top_srcdir}/modules/md5
+-
+ BUILT_SOURCES = \
+ 	wwwsys.h \
+ 	HTAABrow.h \
