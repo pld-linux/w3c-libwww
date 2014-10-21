@@ -5,7 +5,7 @@ Summary(ru.UTF-8):	HTTP-библиотека общеупотребительн�
 Summary(uk.UTF-8):	HTTP-бібліотека загальновживаного коду
 Name:		w3c-libwww
 Version:	5.4.0
-Release:	17
+Release:	18
 License:	W3C (see: http://www.w3.org/Consortium/Legal/copyright-software.html)
 Group:		Libraries
 Source0:	http://www.w3.org/Library/Distribution/%{name}-%{version}.tgz
@@ -16,6 +16,7 @@ Patch2:		%{name}-amfix.patch
 Patch3:		%{name}-link.patch
 Patch4:		%{name}-system-libmd5.patch
 Patch5:		%{name}-ssl.patch
+Patch6:		%{name}-nooldssl.patch
 URL:		http://www.w3.org/Library/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -185,6 +186,7 @@ POST, etc.).
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 %{__libtoolize}

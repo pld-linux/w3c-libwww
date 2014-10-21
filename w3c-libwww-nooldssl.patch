@@ -1,0 +1,14 @@
+--- w3c-libwww-5.4.0/Library/src/SSL/HTSSL.c~	2000-08-03 18:17:20.000000000 +0200
++++ w3c-libwww-5.4.0/Library/src/SSL/HTSSL.c	2014-10-21 07:14:26.937486496 +0200
+@@ -187,9 +187,11 @@
+ 
+ 	/* select the protocol method */
+ 	switch (ssl_prot_method) {
++#ifndef OPENSSL_NO_SSL2
+ 	case HTSSL_V2:
+ 	  meth = SSLv2_client_method();
+ 	  break;
++#endif
+ 	case HTSSL_V3:
+ 	  meth = SSLv3_client_method();
+ 	  break;
