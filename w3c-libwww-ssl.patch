@@ -9,3 +9,18 @@
        ;;
      *)
        echo "${usage}" 1>&2
+--- w3c-libwww-5.4.0/configure.in~	2015-10-22 09:41:53.000000000 +0200
++++ w3c-libwww-5.4.0/configure.in	2015-10-22 09:44:07.731840971 +0200
+@@ -612,11 +612,7 @@
+ dnl Checks for libwww and OpenSSL:
+ AC_MSG_CHECKING(whether we can find OpenSSL)
+ dnl find the ssl library dir (empirical)
+-if test -d '/usr/local/ssl/lib'; then
+-  ssllib="-L/usr/local/ssl/lib -lssl -lcrypto"
+-else
+-  ssllib="-L/usr/lib -lssl -lcrypto"
+-fi
++ssllib="-lssl -lcrypto"
+ dnl find the ssl include dir (empirical)
+ if test -d '/usr/local/ssl/include'; then
+   sslinc="-I/usr/local/ssl/include"
