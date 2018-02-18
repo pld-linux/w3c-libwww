@@ -1,11 +1,11 @@
---- w3c-libwww-5.4.0/configure.in.orig	2008-09-17 13:29:33.000000000 +0200
-+++ w3c-libwww-5.4.0/configure.in	2008-09-17 13:47:03.000000000 +0200
+--- w3c-libwww-5.4.2/configure.ac.orig	2008-09-17 13:29:33.000000000 +0200
++++ w3c-libwww-5.4.2/configure.ac	2008-09-17 13:47:03.000000000 +0200
 @@ -541,14 +541,14 @@
      AC_DEFINE(HT_MD5)
      WWWMD5="libmd5.la"
      LWWWMD5="-lmd5"
 -    LIBWWWMD5='${top_builddir}/modules/md5/libmd5.la'
-+    LIBWWWMD5='-lmd5'
++    LIBWWWMD5='-lcrypto'
      ;;
    esac ],
    AC_MSG_RESULT(yes)
@@ -13,31 +13,32 @@
    WWWMD5="libmd5.la"
    LWWWMD5="-lmd5"
 -  LIBWWWMD5='${top_builddir}/modules/md5/libmd5.la'
-+  LIBWWWMD5='-lmd5'
++  LIBWWWMD5='-lcrypto'
  )
  AC_SUBST(WWWMD5)
  AC_SUBST(LWWWMD5)
---- w3c-libwww-5.4.0/Robot/src/Makefile.am.orig	2008-09-17 13:29:33.000000000 +0200
-+++ w3c-libwww-5.4.0/Robot/src/Makefile.am	2008-09-17 14:05:35.000000000 +0200
-@@ -20,7 +20,7 @@
- 	$(top_builddir)/Library/src/libwwwtrans.la \
+--- w3c-libwww-5.4.2/Robot/src/Makefile.am.orig	2018-02-16 22:55:46.492032806 +0100
++++ w3c-libwww-5.4.2/Robot/src/Makefile.am	2018-02-17 09:24:56.628268433 +0100
+@@ -21,7 +21,7 @@
  	$(top_builddir)/Library/src/libwwwcore.la \
  	$(top_builddir)/Library/src/libwwwutils.la \
--	-lm @LIBWWWXML@ @LIBWWWZIP@ @LIBWWWWAIS@ @LIBWWWSQL@ @LIBWWWMD5@
-+	-lm @LIBWWWXML@ @LIBWWWZIP@ @LIBWWWWAIS@ @LIBWWWSQL@
+ 	-lm @LIBWWWXML@ @LIBWWWZIP@ @LIBWWWWAIS@ \
+-	@LIBWWWSQL@ @LIBWWWMD5@ @LIBWWWSSL@ \
++	@LIBWWWSQL@ @LIBWWWSSL@ \
+ 	$(MYSQL_LIBS)
  
  SUBDIRS = windows
- 
-@@ -66,7 +66,6 @@
+@@ -71,8 +71,6 @@
  	$(CC) $(LDFLAGS) -o purify $(webbot_OBJECTS) \
- 	-lm -lexpat \
+ 	-lm \
  	../../Library/src/.libs/libwww.a \
 -	../../modules/md5/.libs/libmd5.a \
+-	../../modules/expat/.libs/libexpat.a
  	$(LIBS)
  
  
---- w3c-libwww-5.4.0/Library/Examples/Makefile.am.orig	2008-09-17 13:29:33.000000000 +0200
-+++ w3c-libwww-5.4.0/Library/Examples/Makefile.am	2008-09-17 14:06:04.000000000 +0200
+--- w3c-libwww-5.4.2/Library/Examples/Makefile.am.orig	2017-06-24 07:51:37.000000000 +0200
++++ w3c-libwww-5.4.2/Library/Examples/Makefile.am	2018-02-17 09:25:25.091601441 +0100
 @@ -28,7 +28,7 @@
  	../src/libwwwutils.la \
          @LIBWWWDAV@ \
@@ -45,24 +46,34 @@
 -	-lm @LIBWWWZIP@ @LIBWWWWAIS@ @LIBWWWSQL@ @LIBWWWMD5@
 +	-lm @LIBWWWZIP@ @LIBWWWWAIS@ @LIBWWWSQL@
  
- INCLUDES = \
+ AM_CPPFLAGS = \
  	-I$(srcdir)/../src \
-@@ -66,7 +66,6 @@
+@@ -67,8 +67,6 @@
  	../src/.libs/libwwwutils.a \
          ../src/.libs/libwwwdav.a \
  	../src/.libs/libwwwzip.a \
 -	../../modules/md5/.libs/libmd5.a \
+-	../../modules/expat/.libs/libexpat.a
  	$(LIBS)
  
  
 --- w3c-libwww-5.4.0/Library/src/HTDigest.h.orig	2002-06-12 11:31:20.000000000 +0200
 +++ w3c-libwww-5.4.0/Library/src/HTDigest.h	2008-09-17 13:42:22.000000000 +0200
+@@ -39,7 +39,7 @@
+ /* Library include files */
+ #include "WWWLib.h"
+ /* add the MD algorithm header files here below */
+-#include "md5.h"
++#include <openssl/md5.h>
+ 
+ #ifdef __cplusplus
+ extern "C" { 
 @@ -60,7 +60,7 @@
  typedef struct _HTDigestContext {
    int algorithm;          
      union { 
 -           MD5_CTX md5;
-+           md5_state_t md5;
++           MD5_CTX md5;
      } context;
  } HTDigestContext;
  
@@ -73,7 +84,7 @@
      switch (digesttype) {
        case HTDaMD5:
 -	  MD5Init (&context->context.md5);
-+	  md5_init (&context->context.md5);
++	  MD5_Init (&context->context.md5);
  	  break;
        default:
            return NO;
@@ -82,7 +93,7 @@
  	switch (context->algorithm) {
  	case HTDaMD5:
 -	    MD5Update (&context->context.md5, (unsigned char *) input,
-+	    md5_append (&context->context.md5, (unsigned char *) input,
++	    MD5_Update (&context->context.md5, (unsigned char *) input,
  		       inputLen);
  	    break;
  	default:
@@ -91,7 +102,7 @@
  	switch (context->algorithm) {
  	case HTDaMD5:
 -	    MD5Final (digest, &context->context.md5);
-+	    md5_finish (&context->context.md5, digest);
++	    MD5_Final (&context->context.md5, digest);
  	    break;
  	default:
  	    return NO;
@@ -103,29 +114,27 @@
  
 -SUBDIRS = md5
  
---- w3c-libwww-5.4.0/Library/src/Makefile.am.orig	2010-11-09 17:07:12.876029313 +0100
-+++ w3c-libwww-5.4.0/Library/src/Makefile.am	2010-11-09 17:09:21.308695152 +0100
-@@ -269,8 +269,11 @@
+--- w3c-libwww-5.4.2/Library/src/Makefile.am.orig	2018-02-17 22:22:57.834402083 +0100
++++ w3c-libwww-5.4.2/Library/src/Makefile.am	2018-02-17 22:24:20.137734478 +0100
+@@ -267,11 +267,7 @@
  	HTPEP.c
  
- libwwwhttp_la_DEPENDENCIES = \
+ libwwwhttp_la_LIBADD = libwwwmime.la libwwwstream.la libwwwcore.la libwwwutils.la \
 -	../../modules/md5/libmd5.la
-+	libwwwmime.la libwwwutils.la libwwwcore.la
- 
-+libwwwhttp_la_LIBADD = \
-+	@LIBWWWMD5@ libwwwmime.la libwwwutils.la libwwwcore.la
-+ 
- libwwwnews_la_SOURCES = \
- 	WWWNews.h \
- 	HTNDir.h \
-@@ -422,10 +425,6 @@
- 
- libwwwsql_la_LDFLAGS = -rpath $(libdir)
- 
--INCLUDES = \
+-
+-libwwwhttp_la_CPPFLAGS = \
 -	-I/usr/local/include \
 -	-I${top_srcdir}/modules/md5
--
++	@LIBWWWMD5@
+ 
+ libwwwnews_la_SOURCES = \
+ 	WWWNews.h \
+@@ -422,8 +418,6 @@
+ libwwwsql_la_LIBADD = $(MYSQL_LIBS)
+ 
+ libwwwsql_la_CPPFLAGS = \
+-	-I/usr/local/include \
+-	-I${top_srcdir}/modules/md5 \
+ 	$(MYSQL_CFLAGS)
+ 
  BUILT_SOURCES = \
- 	wwwsys.h \
- 	HTAABrow.h \

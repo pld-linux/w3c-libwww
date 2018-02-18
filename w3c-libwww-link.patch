@@ -1,5 +1,8 @@
---- w3c-libwww-5.4.0/Library/src/Makefile.am.orig	2010-11-09 16:19:08.655724837 +0100
-+++ w3c-libwww-5.4.0/Library/src/Makefile.am	2010-11-09 16:35:05.816043461 +0100
+Add inter-library linking.
+HTBind.* moved from libwwwfile to libwwwdir in order to break circular dependencies.
+
+--- w3c-libwww-5.4.2/Library/src/Makefile.am.orig	2018-02-17 23:07:29.681038241 +0100
++++ w3c-libwww-5.4.2/Library/src/Makefile.am	2018-02-17 23:08:36.487704147 +0100
 @@ -6,23 +6,23 @@
  	libwwwutils.la \
  	libwwwcore.la \
@@ -8,8 +11,8 @@
 -	libwwwcache.la \
 +	libwwwhtml.la \
  	libwwwdir.la \
- 	libwwwfile.la \
 +	libwwwstream.la \
+ 	libwwwfile.la \
 +	libwwwcache.la \
  	libwwwftp.la \
  	libwwwgopher.la \
@@ -18,14 +21,14 @@
  	libwwwnews.la \
  	libwwwtelnet.la \
 -	libwwwhtml.la \
--	libwwwapp.la \
--	libwwwinit.la \
++	@WWWXML@ \
++	@WWWZIP@ \
+ 	libwwwapp.la \
+ 	libwwwinit.la \
  	libwwwmux.la \
          @WWWDAV@ \
- 	@WWWXML@ \
- 	@WWWZIP@ \
-+	libwwwapp.la \
-+	libwwwinit.la \
+-	@WWWXML@ \
+-	@WWWZIP@ \
  	@WWWWAIS@ \
  	@WWWSQL@
  
@@ -38,17 +41,16 @@
  
  #	.h files are distributed but originally are made from the
  #	self-documenting hypertext files.
-@@ -143,6 +143,9 @@
+@@ -144,6 +144,8 @@
  	HTWWWStr.h \
  	HTWWWStr.c
  
-+libwwwcore_la_LIBADD = \
-+	libwwwutils.la
++libwwwcore_la_LIBADD = libwwwutils.la
 +
  libwwwtrans_la_SOURCES = \
  	WWWTrans.h \
  	HTANSI.h \
-@@ -158,6 +161,8 @@
+@@ -159,6 +161,8 @@
  	HTWriter.h \
  	HTWriter.c
  
@@ -57,98 +59,124 @@
  libwwwstream_la_SOURCES = \
  	WWWStream.h \
  	HTConLen.h \
-@@ -181,11 +186,15 @@
+@@ -182,22 +186,26 @@
  	HTXParse.h \
  	HTXParse.c
  
-+libwwwstream_la_LIBADD = libwwwfile.la libwwwutils.la libwwwcore.la
++libwwwstream_la_LIBADD = libwwwdir.la libwwwcore.la libwwwutils.la
 +
  libwwwcache_la_SOURCES = \
  	WWWCache.h \
  	HTCache.h \
  	HTCache.c
  
-+libwwwcache_la_LIBADD = libwwwutils.la libwwwcore.la libwwwtrans.la
++libwwwcache_la_LIBADD = libwwwfile.la libwwwtrans.la libwwwcore.la libwwwutils.la
 +
  libwwwfile_la_SOURCES = \
  	WWWFile.h \
  	HTBInit.h \
-@@ -197,6 +206,8 @@
+ 	HTBInit.c \
+-	HTBind.h \
+-	HTBind.c \
+ 	HTFile.h \
+ 	HTFile.c \
  	HTMulti.h \
  	HTMulti.c
  
-+libwwwfile_la_LIBADD = libwwwtrans.la libwwwdir.la libwwwutils.la libwwwcore.la
++libwwwfile_la_LIBADD = libwwwdir.la libwwwtrans.la libwwwhtml.la libwwwcore.la libwwwutils.la
 +
  libwwwftp_la_SOURCES = \
  	WWWFTP.h \
  	HTFTP.h \
-@@ -204,11 +215,15 @@
+@@ -205,11 +213,15 @@
  	HTFTPDir.h \
  	HTFTPDir.c
  
-+libwwwftp_la_LIBADD = libwwwutils.la libwwwcore.la libwwwdir.la libwwwfile.la
++libwwwftp_la_LIBADD = libwwwdir.la libwwwcore.la libwwwutils.la
 +
  libwwwgopher_la_SOURCES = \
  	WWWGophe.h \
  	HTGopher.h \
  	HTGopher.c
  
-+libwwwgopher_la_LIBADD = libwwwutils.la libwwwcore.la libwwwhtml.la libwwwdir.la
++libwwwgopher_la_LIBADD = libwwwhtml.la libwwwdir.la libwwwcore.la libwwwutils.la
 +
  libwwwmime_la_SOURCES = \
  	WWWMIME.h \
  	HTBound.h \
-@@ -225,6 +240,8 @@
+@@ -226,6 +238,8 @@
  	HTMIMImp.c \
  	HTMulpar.h
  
-+libwwwmime_la_LIBADD = libwwwcache.la libwwwstream.la libwwwutils.la libwwwcore.la
++libwwwmime_la_LIBADD = libwwwcache.la libwwwstream.la libwwwcore.la libwwwutils.la
 +
  libwwwhttp_la_SOURCES = \
  	WWWHTTP.h \
  	HTTPUtil.h \
-@@ -265,11 +285,15 @@
+@@ -252,7 +266,7 @@
+ 	HTPEP.h \
+ 	HTPEP.c
+ 
+-libwwwhttp_la_DEPENDENCIES = \
++libwwwhttp_la_LIBADD = libwwwmime.la libwwwstream.la libwwwcore.la libwwwutils.la \
+ 	../../modules/md5/libmd5.la
+ 
+ libwwwhttp_la_CPPFLAGS = \
+@@ -270,11 +284,15 @@
  	HTNewsRq.h \
  	HTNewsRq.c
  
-+libwwwnews_la_LIBADD = libwwwstream.la libwwwutils.la libwwwcore.la libwwwmime.la
++libwwwnews_la_LIBADD = libwwwmime.la libwwwstream.la libwwwhtml.la libwwwcore.la libwwwutils.la
 +
  libwwwtelnet_la_SOURCES = \
  	WWWTelnt.h \
  	HTTelnet.h \
  	HTTelnet.c
  
-+libwwwtelnet_la_LIBADD = libwwwutils.la libwwwcore.la
++libwwwtelnet_la_LIBADD = libwwwcore.la libwwwutils.la
 +
  libwwwwais_la_SOURCES = \
  	WWWWAIS.h \
  	HTWAIS.h \
-@@ -301,6 +325,8 @@
+@@ -283,6 +301,7 @@
+ 	HTWSRC.c
+ 
+ libwwwwais_la_LDFLAGS = -rpath $(libdir)
++libwwwwais_la_LIBADD = 
+ 
+ libwwwhtml_la_SOURCES = \
+ 	WWWHTML.h \
+@@ -306,15 +325,21 @@
  	HTStyle.h \
  	HTStyle.c
  
-+libwwwhtml_la_LIBADD = libwwwutils.la libwwwcore.la
++libwwwhtml_la_LIBADD = libwwwcore.la libwwwutils.la
 +
  libwwwdir_la_SOURCES = \
  	WWWDir.h \
  	HTIcons.h \
-@@ -310,6 +336,9 @@
+ 	HTIcons.c \
+ 	HTDescpt.h \
+ 	HTDescpt.c \
++	HTBind.h \
++	HTBind.c \
  	HTDir.h \
  	HTDir.c
  
-+libwwwdir_la_LIBADD = \
-+	libwwwhtml.la libwwwutils.la libwwwcore.la HTBind.lo
++libwwwdir_la_LIBADD = libwwwhtml.la libwwwcore.la libwwwutils.la
 +
  libwwwapp_la_SOURCES = \
  	WWWApp.h \
  	HTAccess.h \
-@@ -333,11 +362,18 @@
+@@ -338,11 +363,20 @@
  	HTRules.h \
  	HTRules.c
  
 +libwwwapp_la_LIBADD = \
-+	libwwwmime.la libwwwdir.la libwwwhttp.la libwwwnews.la libwwwftp.la libwwwxml.la libwwwzip.la \
-+	libwwwgopher.la libwwwtelnet.la libwwwstream.la
++	libwwwftp.la libwwwgopher.la libwwwhttp.la libwwwnews.la libwwwtelnet.la \
++	libwwwcache.la libwwwfile.la libwwwdir.la \
++	libwwwhtml.la libwwwxml.la libwwwzip.la libwwwmime.la \
++	libwwwstream.la libwwwtrans.la libwwwcore.la libwwwutils.la
 +
  libwwwinit_la_SOURCES = \
  	WWWInit.h \
@@ -156,66 +184,77 @@
  	HTProfil.c
  
 +libwwwinit_la_LIBADD = \
-+	libwwwfile.la libwwwhtml.la libwwwapp.la
++	libwwwapp.la libwwwhtml.la libwwwcache.la libwwwdir.la libwwwcore.la libwwwutils.la
 +
  libwwwmux_la_SOURCES = \
  	WWWMux.h \
  	HTDemux.h \
-@@ -348,12 +384,16 @@
+@@ -353,11 +387,14 @@
  	HTMuxTx.h \
  	HTMuxTx.c
  
-+libwwwmux_la_LIBADD = libwwwutils.la libwwwstream.la libwwwcore.la
++libwwwmux_la_LIBADD = libwwwstream.la libwwwtrans.la libwwwcore.la libwwwutils.la
 +
  libwwwdav_la_SOURCES = \
          HTDAV.h \
          HTDAV.c
  
  libwwwdav_la_LDFLAGS = -rpath $(libdir)
++libwwwdav_la_LIBADD = libwwwapp.la libwwwcore.la libwwwutils.la
  
-+libwwwdav_la_LIBADD = libwwwcore.la libwwwapp.la
-+
  libwwwxml_la_SOURCES = \
  	WWWXML.h \
- 	HTRDF.h \
-@@ -363,7 +403,7 @@
+@@ -366,9 +403,8 @@
+ 	HTXML.h \
+ 	HTXML.c
  
- libwwwxml_la_LDFLAGS = -rpath $(libdir)
- 
--libwwwxml_la_LIBADD = -lexpat
-+libwwwxml_la_LIBADD = -lexpat libwwwcore.la
+-libwwwxml_la_DEPENDENCIES =
+-
+ libwwwxml_la_LDFLAGS = -rpath $(libdir) $(EXPAT_LIBS)
++libwwwxml_la_LIBADD = libwwwcore.la libwwwutils.la -lexpat
  
  libwwwzip_la_SOURCES = \
  	WWWZip.h \
-@@ -371,6 +411,8 @@
- 	HTZip.h \
+@@ -377,6 +413,7 @@
  	HTZip.c
  
-+libwwwzip_la_LIBADD = libwwwutils.la libwwwcore.la
-+
  libwwwzip_la_LDFLAGS = -rpath $(libdir)
++libwwwzip_la_LIBADD = libwwwutils.la libwwwcore.la
  
  libwwwsql_la_SOURCES = \
---- w3c-libwww-5.4.0/Library/src/SSL/Makefile.am.orig	2010-11-09 16:38:48.992046302 +0100
-+++ w3c-libwww-5.4.0/Library/src/SSL/Makefile.am	2010-11-09 16:44:35.662364395 +0100
-@@ -39,7 +39,8 @@
+ 	WWWSQL.h \
+@@ -386,7 +423,8 @@
+ 	HTSQLLog.h \
+ 	HTSQLLog.c
+ 
+-libwwwsql_la_LDFLAGS = -rpath $(libdir) $(MYSQL_LIBS)
++libwwwsql_la_LDFLAGS = -rpath $(libdir)
++libwwwsql_la_LIBADD = libwwwcore.la libwwwutils.la $(MYSQL_LIBS)
+ 
+ libwwwsql_la_CPPFLAGS = \
+ 	-I/usr/local/include \
+--- w3c-libwww-5.4.2/Library/src/SSL/Makefile.am.orig	2017-06-24 07:51:38.000000000 +0200
++++ w3c-libwww-5.4.2/Library/src/SSL/Makefile.am	2018-02-18 11:29:09.440530134 +0100
+@@ -39,7 +39,10 @@
  	HTSSLhttps.h \
  	HTSSLhttps.c
  
--libwwwssl_la_LDFLAGS = -rpath $(libdir)
-+libwwwssl_la_LDFLAGS = -rpath $(libdir) \
-+		       ../libwwwcore.la ../libwwwapp.la ../libwwwhttp.la
+ libwwwssl_la_LDFLAGS = -rpath $(libdir)
++libwwwssl_la_LIBADD = \
++	$(top_builddir)/Library/src/libwwwapp.la $(top_builddir)/Library/src/libwwwhttp.la \
++	$(top_builddir)/Library/src/libwwwcore.la $(top_builddir)/Library/src/libwwwutils.la
  
  LDADD = \
  	libwwwssl.la
---- w3c-libwww-5.4.0/PICS-client/src/Makefile.am.orig	2010-11-09 16:45:44.105885672 +0100
-+++ w3c-libwww-5.4.0/PICS-client/src/Makefile.am	2010-11-09 16:47:56.818021370 +0100
-@@ -30,6 +30,9 @@
+--- w3c-libwww-5.4.2/PICS-client/src/Makefile.am.orig	2017-06-24 07:51:38.000000000 +0200
++++ w3c-libwww-5.4.2/PICS-client/src/Makefile.am	2018-02-18 11:32:54.180527570 +0100
+@@ -30,6 +30,10 @@
  	CSMacRed.c	CSMem.c		CSApp.c \
  	CSParse.c	CSUsrLst.c	CSUser.c
  
 +libpics_la_LIBADD = \
-+	../../Library/src/libwwwcore.la ../../Library/src/libwwwapp.la
++	$(top_builddir)/Library/src/libwwwapp.la $(top_builddir)/Library/src/libwwwhttp.la \
++	$(top_builddir)/Library/src/libwwwdir.la $(top_builddir)/Library/src/libwwwcore.la $(top_builddir)/Library/src/libwwwutils.la
 +
  BUILT_SOURCES = \
  	CSLApp.h	CSLUtils.h \

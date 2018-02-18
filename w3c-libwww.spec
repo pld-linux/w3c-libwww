@@ -1,28 +1,30 @@
+#
+# Conditional build:
+%bcond_without	mysql	# MySQL based SQL library
+
 Summary:	HTTP library of common code
 Summary(pl.UTF-8):	Biblioteka wspólnego kodu HTTP
 Summary(pt_BR.UTF-8):	Biblioteca HTTP de uso geral
 Summary(ru.UTF-8):	HTTP-библиотека общеупотребительного кода
 Summary(uk.UTF-8):	HTTP-бібліотека загальновживаного коду
 Name:		w3c-libwww
-Version:	5.4.0
-Release:	21
+Version:	5.4.2
+Release:	1
 License:	W3C (see: http://www.w3.org/Consortium/Legal/copyright-software.html)
 Group:		Libraries
 Source0:	http://www.w3.org/Library/Distribution/%{name}-%{version}.tgz
-# Source0-md5:	c3734ca6caa405707e134cc8c6d7e422
-Patch0:		%{name}-ac25x.patch
-Patch1:		%{name}-system-expat.patch
-Patch2:		%{name}-amfix.patch
-Patch3:		%{name}-link.patch
-Patch4:		%{name}-system-libmd5.patch
-Patch5:		%{name}-ssl.patch
-Patch6:		%{name}-nooldssl.patch
+# Source0-md5:	98d4b7a331996dbe114119d9c06d5f3d
+Patch0:		%{name}-amfix.patch
+Patch1:		%{name}-link.patch
+Patch2:		%{name}-system-libmd5.patch
+Patch3:		%{name}-ssl.patch
+Patch4:		%{name}-nooldssl.patch
 URL:		http://www.w3.org/Library/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.69
 BuildRequires:	automake
-BuildRequires:	expat-devel
-BuildRequires:	libtool
-BuildRequires:	libmd5-devel >= 20020413-2
+BuildRequires:	expat-devel >= 2.2.0
+BuildRequires:	libtool >= 1.4
+%{?with_mysql:BuildRequires:	mysql-devel}
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -76,7 +78,8 @@ Summary(ru.UTF-8):	Библиотеки и хедеры для программ,
 Summary(uk.UTF-8):	Бібліотеки та хедери для програм, що використовують libwww
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	expat-devel
+Requires:	expat-devel >= 2.2.0
+%{?with_mysql:Requires:	mysql-devel}
 Requires:	openssl-devel >= 0.9.7c
 Requires:	zlib-devel
 
@@ -185,12 +188,10 @@ POST, etc.).
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
-%patch6 -p1
 
 %build
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I config/m4
 %{__autoconf}
 %{__automake}
 %configure \
@@ -199,6 +200,7 @@ POST, etc.).
 	--with-dav \
 	--with-gnu-ld \
 	--with-md5 \
+	%{?with_mysql:--with-mysql=/usr} \
 	--with-regex \
 	--with-ssl \
 	--with-zlib
@@ -218,30 +220,143 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc COPYRIGHT.html ChangeLog LICENSE.html
-%attr(755,root,root) %{_libdir}/libwww*.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libwww*.so.0
+%doc COPYRIGHT.html ChangeLog LICENSE.html README.html
 %attr(755,root,root) %{_libdir}/libpics.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libpics.so.0
+%attr(755,root,root) %{_libdir}/libwwwapp.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwwwapp.so.0
+%attr(755,root,root) %{_libdir}/libwwwcache.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwwwcache.so.0
+%attr(755,root,root) %{_libdir}/libwwwcore.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwwwcore.so.0
+%attr(755,root,root) %{_libdir}/libwwwdav.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwwwdav.so.0
+%attr(755,root,root) %{_libdir}/libwwwdir.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwwwdir.so.0
+%attr(755,root,root) %{_libdir}/libwwwfile.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwwwfile.so.0
+%attr(755,root,root) %{_libdir}/libwwwftp.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwwwftp.so.0
+%attr(755,root,root) %{_libdir}/libwwwgopher.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwwwgopher.so.0
+%attr(755,root,root) %{_libdir}/libwwwhtml.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwwwhtml.so.0
+%attr(755,root,root) %{_libdir}/libwwwhttp.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwwwhttp.so.0
+%attr(755,root,root) %{_libdir}/libwwwinit.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwwwinit.so.0
+%attr(755,root,root) %{_libdir}/libwwwmime.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwwwmime.so.0
+%attr(755,root,root) %{_libdir}/libwwwmux.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwwwmux.so.0
+%attr(755,root,root) %{_libdir}/libwwwnews.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwwwnews.so.0
+%if %{with mysql}
+%attr(755,root,root) %{_libdir}/libwwwsql.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwwwsql.so.0
+%endif
+%attr(755,root,root) %{_libdir}/libwwwssl.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwwwssl.so.0
+%attr(755,root,root) %{_libdir}/libwwwstream.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwwwstream.so.0
+%attr(755,root,root) %{_libdir}/libwwwtelnet.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwwwtelnet.so.0
+%attr(755,root,root) %{_libdir}/libwwwtrans.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwwwtrans.so.0
+%attr(755,root,root) %{_libdir}/libwwwutils.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwwwutils.so.0
+%attr(755,root,root) %{_libdir}/libwwwxml.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwwwxml.so.0
+%attr(755,root,root) %{_libdir}/libwwwzip.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwwwzip.so.0
 %{_datadir}/w3c-libwww
+
+%files devel
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/libwww-config
+%attr(755,root,root) %{_libdir}/libpics.so
+%attr(755,root,root) %{_libdir}/libwwwapp.so
+%attr(755,root,root) %{_libdir}/libwwwcache.so
+%attr(755,root,root) %{_libdir}/libwwwcore.so
+%attr(755,root,root) %{_libdir}/libwwwdav.so
+%attr(755,root,root) %{_libdir}/libwwwdir.so
+%attr(755,root,root) %{_libdir}/libwwwfile.so
+%attr(755,root,root) %{_libdir}/libwwwftp.so
+%attr(755,root,root) %{_libdir}/libwwwgopher.so
+%attr(755,root,root) %{_libdir}/libwwwhtml.so
+%attr(755,root,root) %{_libdir}/libwwwhttp.so
+%attr(755,root,root) %{_libdir}/libwwwinit.so
+%attr(755,root,root) %{_libdir}/libwwwmime.so
+%attr(755,root,root) %{_libdir}/libwwwmux.so
+%attr(755,root,root) %{_libdir}/libwwwnews.so
+%if %{with mysql}
+%attr(755,root,root) %{_libdir}/libwwwsql.so
+%endif
+%attr(755,root,root) %{_libdir}/libwwwssl.so
+%attr(755,root,root) %{_libdir}/libwwwstream.so
+%attr(755,root,root) %{_libdir}/libwwwtelnet.so
+%attr(755,root,root) %{_libdir}/libwwwtrans.so
+%attr(755,root,root) %{_libdir}/libwwwutils.so
+%attr(755,root,root) %{_libdir}/libwwwxml.so
+%attr(755,root,root) %{_libdir}/libwwwzip.so
+%{_libdir}/libpics.la
+%{_libdir}/libwwwapp.la
+%{_libdir}/libwwwcache.la
+%{_libdir}/libwwwcore.la
+%{_libdir}/libwwwdav.la
+%{_libdir}/libwwwdir.la
+%{_libdir}/libwwwfile.la
+%{_libdir}/libwwwftp.la
+%{_libdir}/libwwwgopher.la
+%{_libdir}/libwwwhtml.la
+%{_libdir}/libwwwhttp.la
+%{_libdir}/libwwwinit.la
+%{_libdir}/libwwwmime.la
+%{_libdir}/libwwwmux.la
+%{_libdir}/libwwwnews.la
+%if %{with mysql}
+%{_libdir}/libwwwsql.la
+%endif
+%{_libdir}/libwwwssl.la
+%{_libdir}/libwwwstream.la
+%{_libdir}/libwwwtelnet.la
+%{_libdir}/libwwwtrans.la
+%{_libdir}/libwwwutils.la
+%{_libdir}/libwwwxml.la
+%{_libdir}/libwwwzip.la
+%{_includedir}/wwwconf.h
+%{_includedir}/w3c-libwww
+
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/libpics.a
+%{_libdir}/libwwwapp.a
+%{_libdir}/libwwwcache.a
+%{_libdir}/libwwwcore.a
+%{_libdir}/libwwwdav.a
+%{_libdir}/libwwwdir.a
+%{_libdir}/libwwwfile.a
+%{_libdir}/libwwwftp.a
+%{_libdir}/libwwwgopher.a
+%{_libdir}/libwwwhtml.a
+%{_libdir}/libwwwhttp.a
+%{_libdir}/libwwwinit.a
+%{_libdir}/libwwwmime.a
+%{_libdir}/libwwwmux.a
+%{_libdir}/libwwwnews.a
+%if %{with mysql}
+%{_libdir}/libwwwsql.a
+%endif
+%{_libdir}/libwwwssl.a
+%{_libdir}/libwwwstream.a
+%{_libdir}/libwwwtelnet.a
+%{_libdir}/libwwwtrans.a
+%{_libdir}/libwwwutils.a
+%{_libdir}/libwwwxml.a
+%{_libdir}/libwwwzip.a
 
 %files apps
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/webbot
 %attr(755,root,root) %{_bindir}/w3c
 %attr(755,root,root) %{_bindir}/www
-
-%files devel
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/libwww-config
-%attr(755,root,root) %{_libdir}/libwww*.so
-%attr(755,root,root) %{_libdir}/libpics.so
-%{_libdir}/libwww*.la
-%{_libdir}/libpics.la
-%{_includedir}/wwwconf.h
-%{_includedir}/w3c-libwww
-
-%files static
-%defattr(644,root,root,755)
-%{_libdir}/libwww*.a
-%{_libdir}/libpics.a
