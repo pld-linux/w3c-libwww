@@ -1,18 +1,21 @@
 --- w3c-libwww-5.4.2/configure.ac.orig	2008-09-17 13:29:33.000000000 +0200
 +++ w3c-libwww-5.4.2/configure.ac	2008-09-17 13:47:03.000000000 +0200
-@@ -541,14 +541,14 @@
-     AC_DEFINE(HT_MD5)
+@@ -541,15 +541,15 @@
+     AC_MSG_RESULT(yes)
+     AC_DEFINE(HT_MD5, 1, [Define to enable MD5 for HTTP access authentication.])
      WWWMD5="libmd5.la"
-     LWWWMD5="-lmd5"
+-    LWWWMD5="-lmd5"
 -    LIBWWWMD5='${top_builddir}/modules/md5/libmd5.la'
++    LWWWMD5="-lcrypto"
 +    LIBWWWMD5='-lcrypto'
      ;;
    esac ],
    AC_MSG_RESULT(yes)
    AC_DEFINE(HT_MD5)
    WWWMD5="libmd5.la"
-   LWWWMD5="-lmd5"
+-  LWWWMD5="-lmd5"
 -  LIBWWWMD5='${top_builddir}/modules/md5/libmd5.la'
++  LWWWMD5="-lcrypto"
 +  LIBWWWMD5='-lcrypto'
  )
  AC_SUBST(WWWMD5)
