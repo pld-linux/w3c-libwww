@@ -9,7 +9,7 @@ Summary(ru.UTF-8):	HTTP-библиотека общеупотребительн�
 Summary(uk.UTF-8):	HTTP-бібліотека загальновживаного коду
 Name:		w3c-libwww
 Version:	5.4.2
-Release:	3
+Release:	4
 License:	W3C (see: http://www.w3.org/Consortium/Legal/copyright-software.html)
 Group:		Libraries
 Source0:	http://www.w3.org/Library/Distribution/%{name}-%{version}.tgz
