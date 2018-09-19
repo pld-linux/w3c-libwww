@@ -1,0 +1,51 @@
+--- w3c-libwww-5.4.2/configure.ac~	2018-09-19 09:56:26.000000000 +0200
++++ w3c-libwww-5.4.2/configure.ac	2018-09-19 09:57:49.538058686 +0200
+@@ -748,7 +748,7 @@ AC_ARG_WITH(ssl,
+       SSLINC=$sslinc
+     fi
+     LIBS="$LIBS $withval"
+-    AC_LINK_IFELSE([AC_LANG_PROGRAM([[]], [[ SSL_library_init(); ]])],[],[ AC_MSG_ERROR(Could not find the $withval libraries.  You must first install openSSL.) ])
++    AC_LINK_IFELSE([AC_LANG_PROGRAM([[]], [[ SSL_accept(); ]])],[],[ AC_MSG_ERROR(Could not find the $withval libraries.  You must first install openSSL.) ])
+     AC_MSG_RESULT(yes)
+     WWWSSL="libwwwssl.la"
+     LWWWSSL="-lwwwssl" 
+--- w3c-libwww-5.4.2/Library/src/SSL/HTSSL.c~	2018-09-19 10:02:47.000000000 +0200
++++ w3c-libwww-5.4.2/Library/src/SSL/HTSSL.c	2018-09-19 10:05:45.208749659 +0200
+@@ -214,6 +214,7 @@ PUBLIC BOOL HTSSL_init (void)
+ 
+ 	/* select the protocol method */
+ 	switch (ssl_prot_method) {
++#if 0
+ #ifndef OPENSSL_NO_SSL2
+ 	case HTSSL_V2:
+ 	  meth = SSLv2_client_method();
+@@ -222,6 +223,7 @@ PUBLIC BOOL HTSSL_init (void)
+ 	case HTSSL_V3:
+ 	  meth = SSLv3_client_method();
+ 	  break;
++#endif
+ 	case HTSSL_V23:
+ 	  meth = SSLv23_client_method();
+ 	  break;
+--- w3c-libwww-5.4.2/Library/src/SSL/HTSSL.c~	2018-09-19 10:06:14.000000000 +0200
++++ w3c-libwww-5.4.2/Library/src/SSL/HTSSL.c	2018-09-19 10:08:36.147130194 +0200
+@@ -115,7 +115,7 @@ PRIVATE int verify_callback (int ok, X50
+ 	    verify_error=X509_V_ERR_CERT_CHAIN_TOO_LONG;
+ 	}
+     }
+-    switch (ctx->error) {
++    switch (X509_STORE_CTX_get_error(ctx)) {
+ 
+     case X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT:
+ 	X509_NAME_oneline(X509_get_issuer_name(ctx->current_cert), buf, 256);
+--- w3c-libwww-5.4.2/Library/src/SSL/HTSSL.c~	2018-09-19 10:08:46.000000000 +0200
++++ w3c-libwww-5.4.2/Library/src/SSL/HTSSL.c	2018-09-19 10:10:52.584492036 +0200
+@@ -118,7 +118,7 @@ PRIVATE int verify_callback (int ok, X50
+     switch (X509_STORE_CTX_get_error(ctx)) {
+ 
+     case X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT:
+-	X509_NAME_oneline(X509_get_issuer_name(ctx->current_cert), buf, 256);
++	X509_NAME_oneline(X509_get_issuer_name(X509_STORE_CTX_get_current_cert(ctx)), buf, 256);
+ 	HTTRACE(PROT_TRACE, "issuer= %s\n" _ buf);
+ 	break;
+ 
