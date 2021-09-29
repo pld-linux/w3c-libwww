@@ -1,9 +1,10 @@
 Add inter-library linking.
 HTBind.* moved from libwwwfile to libwwwdir in order to break circular dependencies.
 
---- w3c-libwww-5.4.2/Library/src/Makefile.am.orig	2018-02-17 23:07:29.681038241 +0100
-+++ w3c-libwww-5.4.2/Library/src/Makefile.am	2018-02-17 23:08:36.487704147 +0100
-@@ -6,23 +6,23 @@
+diff -urNp -x '*.orig' w3c-libwww-5.4.2.org/Library/src/Makefile.am w3c-libwww-5.4.2/Library/src/Makefile.am
+--- w3c-libwww-5.4.2.org/Library/src/Makefile.am	2021-09-29 22:22:47.424976516 +0200
++++ w3c-libwww-5.4.2/Library/src/Makefile.am	2021-09-29 22:22:47.498309658 +0200
+@@ -6,23 +6,23 @@ lib_LTLIBRARIES = \
  	libwwwutils.la \
  	libwwwcore.la \
  	libwwwtrans.la \
@@ -32,7 +33,7 @@ HTBind.* moved from libwwwfile to libwwwdir in order to break circular dependenc
  	@WWWWAIS@ \
  	@WWWSQL@
  
-@@ -33,7 +33,7 @@
+@@ -33,7 +33,7 @@ EXTRA_LTLIBRARIES = \
          libwwwdav.la \
  	libwwwsql.la
  
@@ -41,7 +42,7 @@ HTBind.* moved from libwwwfile to libwwwdir in order to break circular dependenc
  
  #	.h files are distributed but originally are made from the
  #	self-documenting hypertext files.
-@@ -144,6 +144,8 @@
+@@ -144,6 +144,8 @@ libwwwcore_la_SOURCES = \
  	HTWWWStr.h \
  	HTWWWStr.c
  
@@ -50,7 +51,7 @@ HTBind.* moved from libwwwfile to libwwwdir in order to break circular dependenc
  libwwwtrans_la_SOURCES = \
  	WWWTrans.h \
  	HTANSI.h \
-@@ -159,6 +161,8 @@
+@@ -159,6 +161,8 @@ libwwwtrans_la_SOURCES = \
  	HTWriter.h \
  	HTWriter.c
  
@@ -59,7 +60,7 @@ HTBind.* moved from libwwwfile to libwwwdir in order to break circular dependenc
  libwwwstream_la_SOURCES = \
  	WWWStream.h \
  	HTConLen.h \
-@@ -182,22 +186,26 @@
+@@ -182,22 +186,26 @@ libwwwstream_la_SOURCES = \
  	HTXParse.h \
  	HTXParse.c
  
@@ -88,7 +89,7 @@ HTBind.* moved from libwwwfile to libwwwdir in order to break circular dependenc
  libwwwftp_la_SOURCES = \
  	WWWFTP.h \
  	HTFTP.h \
-@@ -205,11 +213,15 @@
+@@ -205,11 +213,15 @@ libwwwftp_la_SOURCES = \
  	HTFTPDir.h \
  	HTFTPDir.c
  
@@ -104,7 +105,7 @@ HTBind.* moved from libwwwfile to libwwwdir in order to break circular dependenc
  libwwwmime_la_SOURCES = \
  	WWWMIME.h \
  	HTBound.h \
-@@ -226,6 +238,8 @@
+@@ -226,6 +238,8 @@ libwwwmime_la_SOURCES = \
  	HTMIMImp.c \
  	HTMulpar.h
  
@@ -113,7 +114,7 @@ HTBind.* moved from libwwwfile to libwwwdir in order to break circular dependenc
  libwwwhttp_la_SOURCES = \
  	WWWHTTP.h \
  	HTTPUtil.h \
-@@ -252,7 +266,7 @@
+@@ -252,7 +266,7 @@ libwwwhttp_la_SOURCES = \
  	HTPEP.h \
  	HTPEP.c
  
@@ -122,7 +123,7 @@ HTBind.* moved from libwwwfile to libwwwdir in order to break circular dependenc
  	../../modules/md5/libmd5.la
  
  libwwwhttp_la_CPPFLAGS = \
-@@ -270,11 +284,15 @@
+@@ -270,11 +284,15 @@ libwwwnews_la_SOURCES = \
  	HTNewsRq.h \
  	HTNewsRq.c
  
@@ -138,7 +139,7 @@ HTBind.* moved from libwwwfile to libwwwdir in order to break circular dependenc
  libwwwwais_la_SOURCES = \
  	WWWWAIS.h \
  	HTWAIS.h \
-@@ -283,6 +301,7 @@
+@@ -283,6 +301,7 @@ libwwwwais_la_SOURCES = \
  	HTWSRC.c
  
  libwwwwais_la_LDFLAGS = -rpath $(libdir)
@@ -146,7 +147,7 @@ HTBind.* moved from libwwwfile to libwwwdir in order to break circular dependenc
  
  libwwwhtml_la_SOURCES = \
  	WWWHTML.h \
-@@ -306,15 +325,21 @@
+@@ -306,15 +325,21 @@ libwwwhtml_la_SOURCES = \
  	HTStyle.h \
  	HTStyle.c
  
@@ -168,7 +169,7 @@ HTBind.* moved from libwwwfile to libwwwdir in order to break circular dependenc
  libwwwapp_la_SOURCES = \
  	WWWApp.h \
  	HTAccess.h \
-@@ -338,11 +363,20 @@
+@@ -338,11 +363,20 @@ libwwwapp_la_SOURCES = \
  	HTRules.h \
  	HTRules.c
  
@@ -189,7 +190,7 @@ HTBind.* moved from libwwwfile to libwwwdir in order to break circular dependenc
  libwwwmux_la_SOURCES = \
  	WWWMux.h \
  	HTDemux.h \
-@@ -353,11 +387,14 @@
+@@ -353,11 +387,14 @@ libwwwmux_la_SOURCES = \
  	HTMuxTx.h \
  	HTMuxTx.c
  
@@ -204,7 +205,7 @@ HTBind.* moved from libwwwfile to libwwwdir in order to break circular dependenc
  
  libwwwxml_la_SOURCES = \
  	WWWXML.h \
-@@ -366,9 +403,8 @@
+@@ -366,9 +403,8 @@ libwwwxml_la_SOURCES = \
  	HTXML.h \
  	HTXML.c
  
@@ -215,7 +216,7 @@ HTBind.* moved from libwwwfile to libwwwdir in order to break circular dependenc
  
  libwwwzip_la_SOURCES = \
  	WWWZip.h \
-@@ -377,6 +413,7 @@
+@@ -377,6 +413,7 @@ libwwwzip_la_SOURCES = \
  	HTZip.c
  
  libwwwzip_la_LDFLAGS = -rpath $(libdir)
@@ -223,7 +224,7 @@ HTBind.* moved from libwwwfile to libwwwdir in order to break circular dependenc
  
  libwwwsql_la_SOURCES = \
  	WWWSQL.h \
-@@ -386,7 +423,8 @@
+@@ -386,7 +423,8 @@ libwwwsql_la_SOURCES = \
  	HTSQLLog.h \
  	HTSQLLog.c
  
@@ -233,10 +234,10 @@ HTBind.* moved from libwwwfile to libwwwdir in order to break circular dependenc
  
  libwwwsql_la_CPPFLAGS = \
  	-I/usr/local/include \
---- w3c-libwww-5.4.2/Library/src/SSL/Makefile.am.orig	2017-06-24 07:51:38.000000000 +0200
-+++ w3c-libwww-5.4.2/Library/src/SSL/Makefile.am	2018-02-18 11:29:09.440530134 +0100
-@@ -39,7 +39,10 @@
- 	HTSSLhttps.h \
+diff -urNp -x '*.orig' w3c-libwww-5.4.2.org/Library/src/SSL/Makefile.am w3c-libwww-5.4.2/Library/src/SSL/Makefile.am
+--- w3c-libwww-5.4.2.org/Library/src/SSL/Makefile.am	2017-06-24 07:51:38.000000000 +0200
++++ w3c-libwww-5.4.2/Library/src/SSL/Makefile.am	2021-09-29 22:22:47.498309658 +0200
+@@ -40,6 +40,9 @@ libwwwssl_la_SOURCES = \
  	HTSSLhttps.c
  
  libwwwssl_la_LDFLAGS = -rpath $(libdir)
@@ -246,9 +247,10 @@ HTBind.* moved from libwwwfile to libwwwdir in order to break circular dependenc
  
  LDADD = \
  	libwwwssl.la
---- w3c-libwww-5.4.2/PICS-client/src/Makefile.am.orig	2017-06-24 07:51:38.000000000 +0200
-+++ w3c-libwww-5.4.2/PICS-client/src/Makefile.am	2018-02-18 11:32:54.180527570 +0100
-@@ -30,6 +30,10 @@
+diff -urNp -x '*.orig' w3c-libwww-5.4.2.org/PICS-client/src/Makefile.am w3c-libwww-5.4.2/PICS-client/src/Makefile.am
+--- w3c-libwww-5.4.2.org/PICS-client/src/Makefile.am	2017-06-24 07:51:38.000000000 +0200
++++ w3c-libwww-5.4.2/PICS-client/src/Makefile.am	2021-09-29 22:22:47.498309658 +0200
+@@ -30,6 +30,10 @@ libpics_la_SOURCES = \
  	CSMacRed.c	CSMem.c		CSApp.c \
  	CSParse.c	CSUsrLst.c	CSUser.c
  
