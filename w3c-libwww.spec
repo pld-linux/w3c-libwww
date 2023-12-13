@@ -1,6 +1,7 @@
 #
 # Conditional build:
-%bcond_without	mysql	# MySQL based SQL library
+%bcond_without	mysql		# MySQL based SQL library
+%bcond_without	static_libs	# static libraries
 
 Summary:	HTTP library of common code
 Summary(pl.UTF-8):	Biblioteka wspólnego kodu HTTP
@@ -27,6 +28,7 @@ BuildRequires:	expat-devel >= 2.2.0
 BuildRequires:	libtool >= 1.4
 %{?with_mysql:BuildRequires:	mysql-devel}
 BuildRequires:	openssl-devel >= 0.9.7d
+BuildRequires:	rpmbuild(macros) >= 1.527
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -199,6 +201,7 @@ POST, etc.).
 %configure \
 	ac_cv_lib_rx_regexec=no \
 	--enable-shared \
+	%{__enable_disable static_libs static} \
 	--with-dav \
 	--with-gnu-ld \
 	--with-md5 \
@@ -329,6 +332,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/wwwconf.h
 %{_includedir}/w3c-libwww
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libpics.a
@@ -356,6 +360,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libwwwutils.a
 %{_libdir}/libwwwxml.a
 %{_libdir}/libwwwzip.a
+%endif
 
 %files apps
 %defattr(644,root,root,755)
